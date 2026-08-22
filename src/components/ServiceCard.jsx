@@ -22,6 +22,7 @@ export default function ServiceCard({ service, index }) {
           className="svc__face svc__face--front"
           role={canFlip ? "button" : undefined}
           tabIndex={canFlip && !flipped ? 0 : undefined}
+          aria-hidden={canFlip ? flipped : undefined}
           aria-expanded={canFlip ? flipped : undefined}
           aria-controls={canFlip ? backId : undefined}
           onClick={canFlip ? () => setFlipped(true) : undefined}
@@ -71,6 +72,10 @@ export default function ServiceCard({ service, index }) {
             </div>
 
             <div className="svc__price-sheet">
+              <div className="svc__mobile-total" aria-hidden="true">
+                <span>{service.flip.unit}</span>
+                <b>{money(service.flip.total)} ₽</b>
+              </div>
               <div className="svc__price-head" aria-hidden="true">
                 <span>№</span>
                 <span>Наименование работ</span>

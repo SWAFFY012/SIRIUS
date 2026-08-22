@@ -58,6 +58,11 @@
       "area": "service-price-cards",
       "decision": "Make the pothole repair and asphalt crumb cards fully clickable 3D flip cards with opaque dark mini price tables and gold headers.",
       "reason": "Matches the supplied work-order tables and the established full price-list styling."
+    },
+    {
+      "area": "mobile-services-grid",
+      "decision": "Keep the four service cards in a compact 2x2 grid on phones, with simplified mobile flip-card price backs and a four-column landscape fallback.",
+      "reason": "The services remain visible as one grouped screen while preserving readable titles, touch interaction, and the full price sequence."
     }
   ],
   "evidence": [
