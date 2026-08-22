@@ -1,0 +1,335 @@
+/* ============================================================
+   hero.css — первый экран: слоган, плашки, подсказка прокрутки
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: calc(var(--header-h) + clamp(1rem, 3vh, 2.5rem)) clamp(3.5rem, 8vh, 6rem);
+}
+
+.hero__inner {
+  display: grid;
+  gap: clamp(1rem, 2.2vh, 2rem);
+  max-width: 1180px;
+  margin-inline: 0;
+}
+
+.hero__eyebrow {
+  font-family: var(--font);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+}
+
+/* ── Слоган ── */
+
+.hero__title {
+  display: grid;
+  gap: 0.08em;
+  font-size: var(--fs-h1);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+
+.hero__type-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.06em;
+  min-height: 1.02em;
+}
+
+.hero__typeword {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.hero__caret {
+  display: inline-block;
+  width: 0.055em;
+  height: 0.82em;
+  background: var(--gold-2);
+  border-radius: 1px;
+  animation: caret-blink 1s steps(2, start) infinite;
+  box-shadow: 0 0 18px var(--gold-glow);
+}
+
+.hero__caret.is-done {
+  animation: caret-fade 0.5s var(--ease) forwards;
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes caret-fade {
+  to {
+    opacity: 0;
+    transform: scaleY(0.2);
+  }
+}
+
+/* строки слогана выезжают после того, как слово допечаталось */
+.hero__line {
+  display: block;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 0.66em;
+  letter-spacing: -0.015em;
+  opacity: 0;
+  transform: translateY(0.4em);
+  transition: opacity var(--slow) var(--ease-out), transform var(--slow) var(--ease-out);
+  transition-delay: var(--line-delay, 0ms);
+}
+
+.hero__line.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+/* ── Плашки ── */
+
+.hero__badges {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(0.6rem, 1.4vw, 1rem);
+  margin-top: clamp(0.5rem, 1.6vh, 1.4rem);
+  padding: 0;
+  list-style: none;
+}
+
+.hero__badge {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: clamp(0.85rem, 1.6vh, 1.1rem) 1.1rem;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--mid) var(--ease), transform var(--mid) var(--ease),
+    box-shadow var(--mid) var(--ease);
+}
+
+.hero__badge:hover {
+  border-color: var(--gold-line);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-gold);
+}
+
+.hero__badge--count {
+  align-items: center;
+  gap: 1rem;
+}
+
+.hero__badge--count b {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 1.4rem + 2vw, 3rem);
+  font-weight: 800;
+  line-height: 1;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__badge--count span {
+  font-size: 0.84rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.hero__badge-icon {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-line);
+  color: var(--gold-2);
+}
+
+.hero__badge-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.hero__badge-body {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.hero__badge-body b {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.hero__badge-body span {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+/* ── Подсказка прокрутки ── */
+
+.hero__scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.25rem, 3vh, 2.25rem);
+  transform: translateX(-50%);
+  display: grid;
+  justify-items: center;
+  gap: 0.45rem;
+  font-family: var(--font);
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--fast) var(--ease);
+}
+
+.hero__scroll:hover {
+  color: var(--gold-2);
+}
+
+.hero__scroll svg {
+  width: 22px;
+  height: 22px;
+  animation: scroll-hint 2.1s var(--ease) infinite;
+}
+
+@keyframes scroll-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(7px);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero__title {
+    max-width: 100%;
+  }
+  .hero__scroll span {
+    display: none;
+  }
+}
+
+/* Компактные плашки: выбранный визуальный мотив калькулятора детейлинга. */
+.hero__badge {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(12, 12, 14, 0.5);
+  box-shadow: none;
+}
+
+.hero__badge::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(201, 162, 39, 0.24), rgba(201, 162, 39, 0.06) 65%, transparent);
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity var(--mid) var(--ease), transform var(--slow) var(--ease-out);
+}
+
+.hero__badge:hover {
+  border-color: rgba(224, 187, 78, 0.58);
+  box-shadow: inset 3px 0 0 var(--gold-2);
+}
+
+.hero__badge:hover::before {
+  opacity: 1;
+  transform: none;
+}
+
+/* Кешбэк как компактная CTA-плашка, по масштабу рядом с кнопкой услуг. */
+.hero__badges {
+  display: block;
+  width: fit-content;
+  margin-top: 0.25rem;
+}
+
+.hero__badge {
+  width: fit-content;
+  min-height: 52px;
+  padding: 0.45rem 0.8rem;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.hero__badge-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.hero__badge-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.hero__badge-body {
+  display: block;
+}
+
+.hero__badge-body b {
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+.hero__badge-body span {
+  display: none;
+}
+
+/* Полный кешбэк-текст; ширина до правого края кнопки «Наши услуги». */
+.hero__badges {
+  width: min(100%, 407px);
+}
+
+.hero__badge {
+  width: 100%;
+  min-height: 66px;
+  align-items: flex-start;
+  padding: 0.55rem 0.75rem;
+}
+
+.hero__badge-body {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.hero__badge-body span {
+  display: block;
+  font-size: 0.67rem;
+  line-height: 1.35;
+}
+
+.hero__badge-body b {
+  font-size: 0.78rem;
+}

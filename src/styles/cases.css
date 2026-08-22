@@ -1,0 +1,176 @@
+/* ============================================================
+   cases.css — шапка страницы и карусели объектов
+   ============================================================ */
+
+/* ── шапка внутренней страницы ── */
+
+.page-head {
+  padding-block: calc(var(--header-h) + clamp(2.5rem, 6vw, 5rem)) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.page-head__inner {
+  display: grid;
+  gap: 1rem;
+  max-width: 68ch;
+}
+
+.page-head__title {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+}
+
+/* ── список кейсов ── */
+
+.cases {
+  display: grid;
+  gap: clamp(3rem, 7vw, 6rem);
+  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+}
+
+/* grid-элементы по умолчанию min-width:auto и растягиваются под
+   широкую ленту карусели — обнуляем, иначе страница едет вбок */
+.case,
+.case-carousel,
+.case-carousel__viewport {
+  min-width: 0;
+}
+
+.case__head {
+  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.case__title {
+  font-size: clamp(1.4rem, 1rem + 1.8vw, 2.4rem);
+  text-transform: uppercase;
+}
+
+.case__region {
+  margin-top: 0.4rem;
+  font-family: var(--font);
+  font-size: 0.76rem;
+  color: var(--gold);
+}
+
+.case__summary {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+@media (max-width: 860px) {
+  .case__head {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+/* ── карусель ── */
+
+.case-carousel {
+  position: relative;
+}
+
+.case-carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  cursor: grab;
+  /* лента шире контейнера — выходит за поля страницы */
+  padding-inline: var(--gutter);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+
+.case-carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.case-carousel__viewport.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.case-carousel__track {
+  display: flex;
+  gap: clamp(0.6rem, 1.2vw, 1rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: max-content;
+  animation-name: case-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.case-carousel__viewport.is-dragging .case-carousel__track {
+  animation-play-state: paused;
+}
+
+@keyframes case-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.case-carousel__track li {
+  flex: 0 0 auto;
+  width: clamp(240px, 26vw, 420px);
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+}
+
+.case-carousel__track img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.case-carousel__toggle {
+  position: absolute;
+  right: var(--gutter);
+  bottom: -1.6rem;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  font-size: 0.7rem;
+  color: var(--muted);
+  transition: color var(--fast) var(--ease), border-color var(--fast) var(--ease);
+}
+
+.case-carousel__toggle:hover {
+  color: var(--gold-2);
+  border-color: var(--gold-line);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-carousel__track {
+    animation: none;
+  }
+}
+
+/* страница услуг: всё должно уместиться в один экран — режем отступы */
+.page--tight .page-head {
+  padding-block: calc(var(--header-h) + clamp(1.25rem, 3vh, 2.25rem)) clamp(0.5rem, 1.4vh, 1rem);
+}
+
+.page--tight .section {
+  padding-block: clamp(1rem, 2.4vh, 2rem);
+}
+
+.page--tight .page-head__inner {
+  gap: 0.6rem;
+}

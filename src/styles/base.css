@@ -1,0 +1,252 @@
+/* ============================================================
+   base.css — сброс, типографика, примитивы, утилиты
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* clip, а не hidden: hidden на body делает его скролл-контейнером
+     и документ перестаёт прокручиваться */
+  overflow-x: clip;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--gold);
+  color: #0a0a0b;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── скроллбар ── */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2830;
+  border-radius: 6px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-deep);
+}
+
+/* ============================================================
+   Раскладка
+   ============================================================ */
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.section__head {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+  max-width: 62ch;
+}
+
+.section__eyebrow {
+  font-family: var(--font);
+  font-size: var(--fs-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+
+.section__title {
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+}
+
+.section__lead {
+  font-size: var(--fs-lead);
+  color: var(--muted);
+  max-width: 58ch;
+}
+
+/* ============================================================
+   Кнопки
+   ============================================================ */
+
+.btn {
+  --btn-pad-y: 0.95rem;
+  --btn-pad-x: 1.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: var(--btn-pad-y) var(--btn-pad-x);
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: transform var(--fast) var(--ease), background var(--fast) var(--ease),
+    border-color var(--fast) var(--ease), color var(--fast) var(--ease),
+    box-shadow var(--mid) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--gold {
+  background: var(--gold-grad);
+  color: #14100a;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn--gold:hover {
+  box-shadow: 0 14px 46px rgba(201, 162, 39, 0.34);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--line-2);
+  color: var(--text);
+  backdrop-filter: blur(8px);
+}
+
+.btn--ghost:hover {
+  border-color: var(--gold-line);
+  background: var(--gold-soft);
+  color: var(--gold-hi);
+  transform: translateY(-2px);
+}
+
+.btn--sm {
+  --btn-pad-y: 0.62rem;
+  --btn-pad-x: 1.2rem;
+  font-size: 0.78rem;
+}
+
+/* ============================================================
+   Утилиты
+   ============================================================ */
+
+.accent {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ── появление при скролле ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--slow) var(--ease-out), transform var(--slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

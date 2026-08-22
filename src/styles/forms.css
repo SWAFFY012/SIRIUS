@@ -1,0 +1,431 @@
+/* ============================================================
+   forms.css — заявка и контакты
+   ============================================================ */
+
+.page--booking .page-head {
+  padding-block: calc(var(--header-h) + clamp(1rem, 2vw, 1.75rem)) 0.6rem;
+}
+
+.page--booking .page-head__title {
+  font-size: clamp(1.9rem, 1.25rem + 2.5vw, 3.5rem);
+}
+
+.page--booking .booking {
+  padding-block: clamp(0.65rem, 1.5vw, 1.25rem) clamp(3rem, 6vw, 5rem);
+}
+
+.booking__grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.4fr);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+}
+
+.booking__info h2 {
+  font-size: clamp(1.15rem, 1rem + 0.7vw, 1.5rem);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.booking__steps {
+  display: grid;
+  gap: 1.1rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.booking__steps li {
+  display: grid;
+  gap: 0.25rem;
+  padding-left: 2.6rem;
+  position: relative;
+  counter-increment: step;
+}
+
+.booking__steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-line);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.booking__steps b {
+  font-size: 0.95rem;
+}
+
+.booking__steps span {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.booking__contacts {
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.booking__contacts a {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--gold-2);
+}
+
+.booking__contacts p {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+/* ── форма ── */
+
+.form {
+  display: grid;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-lg);
+  background: var(--glass);
+  backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow: var(--shadow);
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+
+.form__field {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.form__field > span,
+.form__fieldset legend {
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.form__field > span i {
+  font-style: normal;
+  color: var(--gold-2);
+}
+
+.form__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form__fieldset legend {
+  margin-bottom: 0.6rem;
+  padding: 0;
+}
+
+.form input[type="text"],
+.form input[type="tel"],
+.form textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.95rem;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  font-size: 1rem;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+
+.form textarea {
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--muted-2);
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.form input[aria-invalid="true"] {
+  border-color: #d9584a;
+}
+
+.form__error {
+  font-style: normal;
+  font-size: 0.8rem;
+  color: #f08c80;
+}
+
+.form__helper {
+  font-style: normal;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--muted-2);
+}
+
+/* чипы услуг */
+
+.form__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease),
+    color var(--fast) var(--ease);
+}
+
+.chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.chip:hover {
+  border-color: var(--gold-line);
+  color: var(--gold-hi);
+}
+
+.chip.is-on {
+  background: var(--gold-soft);
+  border-color: var(--gold);
+  color: var(--gold-hi);
+  font-weight: 600;
+}
+
+.chip:has(input:focus-visible) {
+  outline: 2px solid var(--gold-2);
+  outline-offset: 2px;
+}
+
+/* согласие */
+
+.form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.form__consent input {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 0.15rem;
+  accent-color: var(--gold);
+}
+
+.form__consent.has-error span {
+  color: #f08c80;
+}
+
+.form__hp {
+  position: absolute !important;
+  left: -9999px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form__submit {
+  justify-self: start;
+  min-width: 220px;
+}
+
+.form__submit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.form__status {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+}
+
+.form__status.is-ok {
+  border-color: rgba(120, 200, 140, 0.4);
+  background: rgba(90, 180, 110, 0.12);
+  color: #a8e0b8;
+}
+
+.form__status.is-error {
+  border-color: rgba(217, 88, 74, 0.45);
+  background: rgba(217, 88, 74, 0.12);
+  color: #f0a89e;
+}
+
+.form__status.is-sending {
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .page--booking .page-head {
+    padding-top: calc(var(--header-h-mob) + 1rem);
+  }
+
+  .booking__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================================================
+   Контакты
+   ============================================================ */
+
+.contacts__grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.3fr);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
+}
+
+.contacts__info {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.contacts__item b {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+.contacts__item p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.contacts__item a {
+  transition: color var(--fast) var(--ease);
+}
+
+.contacts__item p a:hover {
+  color: var(--gold-2);
+}
+
+.contacts__socials {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contacts__socials a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  min-height: 32px;
+  font-size: 0.92rem;
+}
+
+.contacts__socials span {
+  min-width: 96px;
+  color: var(--text);
+}
+
+.contacts__socials i {
+  font-style: normal;
+  font-family: var(--font);
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.contacts__socials a:hover i {
+  color: var(--gold-2);
+}
+
+.contacts__note {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-size: 0.78rem;
+  color: var(--muted-2);
+}
+
+.contacts__map {
+  position: relative;
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-2);
+  min-height: 460px;
+  display: grid;
+}
+
+.contacts__map iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  border: 0;
+  filter: grayscale(0.25) contrast(1.05) brightness(0.9);
+}
+
+.contacts__map-link {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gold-line);
+  background: rgba(10, 10, 11, 0.85);
+  backdrop-filter: blur(10px);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.contacts__map-link:hover {
+  border-color: var(--gold-2);
+  color: var(--gold-hi);
+}
+
+@media (max-width: 900px) {
+  .contacts__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "project": {
+    "name": "sirius-road",
+    "productType": null,
+    "stack": [
+      "react",
+      "vite"
+    ]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "unknown",
+    "colors": {},
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [],
+    "avoid": []
+  },
+  "decisions": [
+    {
+      "area": "pricing",
+      "decision": "Use a unified three-column calculator: work categories, selectable price rows with quantities, and a visual total summary.",
+      "reason": "Matches the approved detailing reference while preserving SIRIUS data and dark gold identity."
+    },
+    {
+      "area": "selection-state",
+      "decision": "Highlight selected and hovered plates with a left-to-right fading gold wash and a visible gold edge.",
+      "reason": "Carries the detailing interaction motif into service cards, hero badges, and calculator rows."
+    },
+    {
+      "area": "pricing-order-and-tone",
+      "decision": "Open the price route with the full price list, place the calculator after it, and render the calculator as a compact dark layout without a containing background panel.",
+      "reason": "Final user-selected revision: transparent outer container, dark controls, reduced calculator height."
+    },
+    {
+      "area": "page-density",
+      "decision": "Remove service and booking lead paragraphs, keep all price accordions closed initially, and reduce the hero cashback badge to compact CTA scale.",
+      "reason": "User requested faster access to the booking form and less introductory content."
+    },
+    {
+      "area": "service-price-cards",
+      "decision": "Make the pothole repair and asphalt crumb cards fully clickable 3D flip cards with opaque dark mini price tables and gold headers.",
+      "reason": "Matches the supplied work-order tables and the established full price-list styling."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "project.stack:react",
+      "source": "package.json"
+    },
+    {
+      "fact": "project.stack:vite",
+      "source": "package.json"
+    }
+  ],
+  "generatedAt": "2026-08-22T12:59:58.340Z"
+}
