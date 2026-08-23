@@ -71,8 +71,8 @@
     },
     {
       "area": "booking-above-fold",
-      "decision": "Align the compact booking title with the left information column and lift the form alongside it on desktop; show the form before process details on phones.",
-      "reason": "The inquiry fields must be visible immediately without scrolling while process information remains available below."
+      "decision": "Align the compact booking title with the left information column, lift the form alongside it, use exactly the eight price-list sections as service choices, and remove referral fields.",
+      "reason": "The inquiry form should end near the contact block, remain visible in the first desktop screen, and avoid unrelated fields."
     }
   ],
   "evidence": [

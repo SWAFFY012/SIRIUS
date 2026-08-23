@@ -2,19 +2,10 @@ import { useState } from "react"
 import ScrollScene from "@/components/ScrollScene"
 import PageHead from "@/components/PageHead"
 import { COMPANY } from "@/data/site"
-import { SERVICES } from "@/data/services"
+import { PRICE_SECTIONS } from "@/data/price"
 import { useReveal } from "@/lib/hooks"
 
-const EXTRA_SERVICES = [
-  "Земляные работы",
-  "Устройство основания",
-  "Бордюры и водоотвод",
-  "Дорожные знаки и освещение",
-  "Проектирование и изыскания",
-  "Аренда спецтехники",
-]
-
-const OPTIONS = [...SERVICES.map((s) => s.title.replace(/ в СПб и ЛО$/i, "")), ...EXTRA_SERVICES]
+const OPTIONS = PRICE_SECTIONS.map((section) => section.title)
 
 export default function Booking() {
   const ref = useReveal()
@@ -172,17 +163,9 @@ export default function Booking() {
                 <span>Комментарий</span>
                 <textarea
                   name="comment"
-                  rows="3"
+                  rows="2"
                   placeholder="Состояние основания, желаемые сроки, особенности заезда техники"
                 />
-              </label>
-
-              <label className="form__field form__field--referral">
-                <span>Кто вас порекомендовал</span>
-                <input type="text" name="referral" placeholder="Имя и телефон — для начисления кешбэка" />
-                <em className="form__helper">
-                  Если вас привёл знакомый — укажите его: кешбэк начислим по договору.
-                </em>
               </label>
 
               <input
