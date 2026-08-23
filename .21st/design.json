@@ -60,9 +60,14 @@
       "reason": "Matches the supplied work-order tables and the established full price-list styling."
     },
     {
-      "area": "mobile-services-grid",
-      "decision": "Keep the four service cards in a compact 2x2 grid on phones, with simplified mobile flip-card price backs and a four-column landscape fallback.",
-      "reason": "The services remain visible as one grouped screen while preserving readable titles, touch interaction, and the full price sequence."
+      "area": "expanded-service-pricing",
+      "decision": "Use tall two-column service cards on laptops and one-column cards on phones so every flip-side work list remains fully visible without nested scrolling.",
+      "reason": "The four supplied service photos and complete package prices need readable line lengths and uninterrupted access on touch screens."
+    },
+    {
+      "area": "hero-proof-points",
+      "decision": "Replace the cashback plate with three border-only guarantee, budget, and compliance benefits.",
+      "reason": "Keeps the hero focused on the company's main customer promises without another heavy card surface."
     }
   ],
   "evidence": [

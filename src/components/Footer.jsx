@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { COMPANY, NAV } from "@/data/site"
+import { COMPANY, NAV, SOCIALS } from "@/data/site"
 
 export default function Footer() {
   return (
@@ -34,6 +34,18 @@ export default function Footer() {
               <a href={COMPANY.phoneHref}>{COMPANY.phone}</a>
               <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
               <p>{COMPANY.hours}</p>
+            </div>
+
+            <div className="footer__col footer__social-col">
+              <h4>Социальные сети</h4>
+              <div className="footer__socials">
+                {SOCIALS.map((social) => (
+                  <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer">
+                    <span>{social.label}</span>
+                    <i>{social.handle}</i>
+                  </a>
+                ))}
+              </div>
             </div>
 
             <div className="footer__col">

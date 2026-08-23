@@ -60,7 +60,7 @@ export default function PriceSection({ section, selected, onToggle, onQty, scene
                     <td>{item.name}</td>
                     <td className="price-table__unit">{item.unit}</td>
                     <td className="price-table__price">
-                      {item.price ? money(item.price) : item.note}
+                      {item.price ? `ОТ ${money(item.price)}` : item.note}
                     </td>
                   </tr>
                 )
@@ -95,7 +95,7 @@ export default function PriceSection({ section, selected, onToggle, onQty, scene
                         />
                       </label>
                       <i>{item.unit}</i>
-                      <b>{money(item.price * selected[item.n])} ₽</b>
+                      <b>ОТ {money(item.price * selected[item.n])} ₽</b>
                       <button
                         type="button"
                         className="mini-calc__remove"
@@ -112,7 +112,7 @@ export default function PriceSection({ section, selected, onToggle, onQty, scene
 
             <div className="mini-calc__sum">
               <span>Итого по разделу</span>
-              <b>{money(total)} ₽</b>
+              <b>ОТ {money(total)} ₽</b>
             </div>
           </div>
         </aside>

@@ -63,13 +63,13 @@ function PriceCalculator({ selected, onToggle, onQty }) {
                     <input type="checkbox" checked={active} disabled={!selectable} onChange={() => onToggle(item)} />
                     <span className="price-option__check" aria-hidden="true" />
                     <span className="price-option__body"><b>{item.name}</b><i>{item.n} · {item.unit}</i></span>
-                    <strong>{item.price ? `${money(item.price)} ₽` : item.note}</strong>
+                    <strong>{item.price ? `ОТ ${money(item.price)} ₽` : item.note}</strong>
                   </label>
                   {active && (
                     <div className="price-option__qty">
                       <label htmlFor={`qty-${item.n}`}>Объём, {item.unit}</label>
                       <input id={`qty-${item.n}`} type="number" min="0" step="1" inputMode="numeric" value={selected[item.n]} onChange={(event) => onQty(item.n, event.target.value)} />
-                      <b>{money(item.price * selected[item.n])} ₽</b>
+                      <b>ОТ {money(item.price * selected[item.n])} ₽</b>
                     </div>
                   )}
                 </div>
@@ -85,7 +85,7 @@ function PriceCalculator({ selected, onToggle, onQty }) {
           </figure>
           <div className="price-calc__result">
             <span className="price-calc__legend">Предварительная стоимость</span>
-            <strong className={picked.length ? "" : "is-empty"}>{picked.length ? `${money(total)} ₽` : "Выберите работы"}</strong>
+            <strong className={picked.length ? "" : "is-empty"}>{picked.length ? `ОТ ${money(total)} ₽` : "Выберите работы"}</strong>
             {picked.length > 0 && <p>{picked.length} {picked.length === 1 ? "позиция" : picked.length < 5 ? "позиции" : "позиций"} в расчёте</p>}
             <Link to="/booking" className="btn btn--gold">Запросить смету</Link>
           </div>
@@ -108,7 +108,7 @@ function FullPriceList() {
             <summary><span>{String(section.num).padStart(2, "0")}</span><b>{section.title}</b><i>{section.items.length} позиций</i><em aria-hidden="true">+</em></summary>
             <div className="price-list__body">
               {section.items.map((item) => (
-                <div className="price-list__row" key={item.n}><span>{item.n}</span><b>{item.name}</b><i>{item.unit}</i><strong>{item.price ? `${money(item.price)} ₽` : item.note}</strong></div>
+                <div className="price-list__row" key={item.n}><span>{item.n}</span><b>{item.name}</b><i>{item.unit}</i><strong>{item.price ? `ОТ ${money(item.price)} ₽` : item.note}</strong></div>
               ))}
             </div>
           </details>

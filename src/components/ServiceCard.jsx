@@ -36,6 +36,7 @@ export default function ServiceCard({ service, index }) {
           <img
             className="svc__photo"
             src={service.image}
+            style={{ objectPosition: service.imagePosition }}
             alt=""
             loading="lazy"
             decoding="async"
@@ -74,7 +75,7 @@ export default function ServiceCard({ service, index }) {
             <div className="svc__price-sheet">
               <div className="svc__mobile-total" aria-hidden="true">
                 <span>{service.flip.unit}</span>
-                <b>{money(service.flip.total)} ₽</b>
+                <b>ОТ {money(service.flip.total)} ₽</b>
               </div>
               <div className="svc__price-head" aria-hidden="true">
                 <span>№</span>
@@ -84,11 +85,11 @@ export default function ServiceCard({ service, index }) {
               </div>
               <ol className="svc__rows">
                 {service.flip.rows.map((row, i) => (
-                  <li key={row}>
+                  <li key={`${i}-${row}`}>
                     <span className="svc__row-num">{i + 1}</span>
                     <span>{row}</span>
                     <i>{i === 0 ? service.flip.unit : ""}</i>
-                    <b>{i === 0 ? money(service.flip.total) : ""}</b>
+                    <b>{i === 0 ? `ОТ ${money(service.flip.total)}` : ""}</b>
                   </li>
                 ))}
               </ol>

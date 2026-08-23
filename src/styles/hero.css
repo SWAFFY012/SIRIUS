@@ -333,3 +333,50 @@
 .hero__badge-body b {
   font-size: 0.78rem;
 }
+
+/* Преимущества без отдельной фоновой плашки. */
+.hero__benefits {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  width: min(100%, 960px);
+  margin-top: 0.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__benefit {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 0.65rem;
+  align-items: start;
+  padding: 0.65rem 0.75rem 0.65rem 0;
+  border-bottom: 1px solid var(--gold-line);
+  color: var(--text);
+  font-size: clamp(0.78rem, 0.72rem + 0.2vw, 0.9rem);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.hero__benefit svg {
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  border: 1px solid var(--gold-line);
+  border-radius: 50%;
+  color: var(--gold-2);
+  background: var(--gold-soft);
+}
+
+@media (max-width: 760px) {
+  .hero__benefits {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .hero__benefit {
+    min-height: 44px;
+    padding-block: 0.45rem;
+    font-size: 0.8rem;
+  }
+}

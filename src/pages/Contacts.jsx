@@ -1,16 +1,8 @@
 import { Link } from "react-router-dom"
 import ScrollScene from "@/components/ScrollScene"
 import PageHead from "@/components/PageHead"
-import { COMPANY } from "@/data/site"
+import { COMPANY, SOCIALS } from "@/data/site"
 import { useReveal } from "@/lib/hooks"
-
-/* Ссылки-заглушки: заказчик заменит на реальные аккаунты. */
-const SOCIALS = [
-  { label: "Telegram", handle: "@sirius_road", href: "#" },
-  { label: "MAX", handle: "sirius_road", href: "#" },
-  { label: "ВКонтакте", handle: "vk.com/sirius_road", href: "#" },
-  { label: "WhatsApp", handle: COMPANY.phone, href: "#" },
-]
 
 export default function Contacts() {
   const ref = useReveal()

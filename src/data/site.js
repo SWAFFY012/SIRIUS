@@ -37,15 +37,18 @@ export const HERO_SLOGAN = {
   ],
 };
 
-/* Плашки под слоганом. Числовые — с анимацией счётчика. */
-export const HERO_BADGES = [
-  {
-    id: "cashback",
-    icon: "cashback",
-    title: "Кешбэк за приглашённого",
-    label:
-      "Привели заказчика — получаете вознаграждение с его договора, даже если сами не заказывали работы",
-  },
+/* Ключевые преимущества под слоганом. */
+export const HERO_BENEFITS = [
+  "Подберём решение под ваш бюджет",
+  "Соблюдение всех сроков, бюджета и качество по СНиП",
+  "Мы предоставляем гарантию по договору до 7 лет",
+];
+
+export const SOCIALS = [
+  { label: "Instagram", handle: "@rcc_sirius", href: "https://www.instagram.com/rcc_sirius/" },
+  { label: "Telegram", handle: "@sirius_road", href: "https://t.me/sirius_road" },
+  { label: "ВКонтакте", handle: "vk.com/sirius_road", href: "https://vk.com/sirius_road" },
+  { label: "WhatsApp", handle: COMPANY.phone, href: "https://wa.me/79811977287" },
 ];
 
 export const NAV = [
