@@ -71,8 +71,8 @@
     },
     {
       "area": "booking-above-fold",
-      "decision": "Align the compact booking title with the left information column, lift the form alongside it, use exactly the eight price-list sections as service choices, and remove referral fields.",
-      "reason": "The inquiry form should end near the contact block, remain visible in the first desktop screen, and avoid unrelated fields."
+      "decision": "Use a larger booking title in the left column and position the desktop form below the fixed navigation, with its bottom aligned to the contact-hours line; use exactly eight price-list choices and no referral field.",
+      "reason": "The form must remain clear of navigation while ending at the same visual baseline as the contact information."
     }
   ],
   "evidence": [

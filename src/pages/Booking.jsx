@@ -5,7 +5,18 @@ import { COMPANY } from "@/data/site"
 import { PRICE_SECTIONS } from "@/data/price"
 import { useReveal } from "@/lib/hooks"
 
-const OPTIONS = PRICE_SECTIONS.map((section) => section.title)
+const BOOKING_LABELS = {
+  earthwork: "Земляные работы",
+  base: "Дорожное основание",
+  asphalt: "Асфальтирование и покрытия",
+  drainage: "Бордюры и водоотвод",
+  bridges: "Мосты и сооружения",
+  safety: "Безопасность дорог",
+  design: "Проектирование и изыскания",
+  rent: "Аренда спецтехники",
+}
+
+const OPTIONS = PRICE_SECTIONS.map((section) => BOOKING_LABELS[section.id] || section.title)
 
 export default function Booking() {
   const ref = useReveal()
