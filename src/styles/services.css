@@ -670,19 +670,31 @@
   height: clamp(270px, 34vh, 340px);
 }
 
+.svc__face--back {
+  gap: 0;
+  padding: 0;
+}
+
+.svc__back-head {
+  padding: clamp(0.6rem, 1.2vw, 0.85rem);
+}
+
 .svc__price-sheet {
-  grid-template-rows: auto auto;
-  overflow: visible;
+  flex: 1 1 auto;
+  grid-template-rows: auto minmax(0, 1fr);
+  overflow: hidden;
 }
 
 .svc__rows {
-  overflow: visible;
+  grid-template-rows: repeat(var(--price-row-count), minmax(0, 1fr));
+  overflow: hidden;
 }
 
 .svc__rows li {
-  padding-block: 0.35rem;
-  font-size: clamp(0.62rem, 0.58rem + 0.12vw, 0.72rem);
-  line-height: 1.25;
+  align-items: center;
+  padding-block: 0.4rem;
+  font-size: clamp(0.72rem, 0.68rem + 0.12vw, 0.82rem);
+  line-height: 1.22;
 }
 
 .svc__rows li > span:nth-child(2) {
@@ -725,8 +737,12 @@
   }
 
   .svc__face--back {
-    gap: 0.25rem;
-    padding: 0.4rem;
+    gap: 0;
+    padding: 0;
+  }
+
+  .svc__back-head {
+    padding: 0.25rem 0.25rem 0.25rem 0.4rem;
   }
 
   .svc__back-head h3 {
@@ -737,9 +753,9 @@
   .svc__rows li {
     grid-template-columns: 14px minmax(0, 1fr);
     gap: 0.2rem;
-    padding: 0.25rem 0.2rem;
-    font-size: clamp(0.54rem, 2.25vw, 0.64rem);
-    line-height: 1.18;
+    padding: 0.3rem 0.2rem;
+    font-size: clamp(0.6rem, 2.55vw, 0.7rem);
+    line-height: 1.16;
   }
 
   .svc__mobile-total {

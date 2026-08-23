@@ -3,7 +3,7 @@ export const SERVICES = [
   {
     id: "pothole",
     title: "Ямочный ремонт асфальта в СПб и ЛО",
-    price: "ОТ 1 650 ₽/м²",
+    price: "от 1 650 ₽/м²",
     text: "Ремонт дворов, проездов, складов и АЗС горячей смесью.",
     image: "/services/pothole.webp",
     imagePosition: "50% 50%",
@@ -23,7 +23,7 @@ export const SERVICES = [
   {
     id: "crumb",
     title: "Укладка асфальтовой крошки в СПб и ЛО",
-    price: "ОТ 690 ₽/м²",
+    price: "от 690 ₽/м²",
     text: "Покрытие для площадок, подъездов и стоянок.",
     image: "/services/crumb.webp",
     imagePosition: "50% 45%",
@@ -42,7 +42,7 @@ export const SERVICES = [
   {
     id: "asphalt",
     title: "Асфальтирование под ключ в СПб и ЛО",
-    price: "ОТ 3 750 ₽/м²",
+    price: "от 3 750 ₽/м²",
     text: "Парковки, склады, дворы и частные участки под ключ.",
     image: "/services/asphalt.webp",
     imagePosition: "50% 48%",
@@ -63,7 +63,7 @@ export const SERVICES = [
   {
     id: "landscaping",
     title: "Благоустройство территорий под ключ в СПб и ЛО",
-    price: "ОТ 7 200 ₽/м²",
+    price: "от 7 200 ₽/м²",
     text: "Подготовка основания и укладка плитки под ключ.",
     image: "/services/landscaping.webp",
     imagePosition: "50% 50%",

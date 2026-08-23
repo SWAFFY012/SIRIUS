@@ -61,8 +61,8 @@
     },
     {
       "area": "expanded-service-pricing",
-      "decision": "Use a compact 2×2 service grid on laptops and phones, with concise front descriptions and shortened work names on the flip side.",
-      "reason": "The user prioritizes seeing all four services together and removing unused vertical space while retaining essential pricing content."
+      "decision": "Use a compact 2×2 service grid on laptops and phones; distribute price rows evenly across the full flip-side height with larger type and no unused bottom area.",
+      "reason": "The user prioritizes seeing all four services together while keeping every compact price card visually full and readable."
     },
     {
       "area": "hero-proof-points",
