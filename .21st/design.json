@@ -73,6 +73,11 @@
       "area": "booking-above-fold",
       "decision": "Use a larger booking title in the left column and position the desktop form below the fixed navigation, with its bottom aligned to the contact-hours line; use exactly eight price-list choices and no referral field.",
       "reason": "The form must remain clear of navigation while ending at the same visual baseline as the contact information."
+    },
+    {
+      "area": "contacts-above-fold",
+      "decision": "Remove the contact-page lead, use a compact title, lift contact details and map directly beneath it, and render all contact values in high-contrast text.",
+      "reason": "The complete contact block and map should read as one screen, matching the compact booking-page composition."
     }
   ],
   "evidence": [

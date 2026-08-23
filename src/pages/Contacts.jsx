@@ -10,11 +10,8 @@ export default function Contacts() {
   return (
     <>
       <ScrollScene startScene={5} />
-      <main className="page" ref={ref}>
-        <PageHead
-          title="Контакты"
-          lead={`${COMPANY.legal} — ${COMPANY.tagline.toLowerCase()}, ${COMPANY.region}.`}
-        />
+      <main className="page page--contacts" ref={ref}>
+        <PageHead title="Контакты" />
 
         <section className="section contacts" data-nav="/contacts" data-scene={5}>
           <div className="container contacts__grid">
