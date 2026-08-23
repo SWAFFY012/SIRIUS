@@ -61,13 +61,18 @@
     },
     {
       "area": "expanded-service-pricing",
-      "decision": "Use a compact 2×2 service grid on laptops and phones; distribute price rows evenly across the full flip-side height with larger type and no unused bottom area.",
-      "reason": "The user prioritizes seeing all four services together while keeping every compact price card visually full and readable."
+      "decision": "Use a compact 2×2 service grid; show package price in its own full-width gold strip and keep the flip-side body as a clean numbered work list without units.",
+      "reason": "Separating price from work names prevents column overlap and keeps every compact card readable."
     },
     {
       "area": "hero-proof-points",
       "decision": "Replace the cashback plate with three border-only guarantee, budget, and compliance benefits.",
       "reason": "Keeps the hero focused on the company's main customer promises without another heavy card surface."
+    },
+    {
+      "area": "booking-above-fold",
+      "decision": "Align the compact booking title with the left information column and lift the form alongside it on desktop; show the form before process details on phones.",
+      "reason": "The inquiry fields must be visible immediately without scrolling while process information remains available below."
     }
   ],
   "evidence": [

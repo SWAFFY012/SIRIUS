@@ -7,11 +7,12 @@
 }
 
 .page--booking .page-head__title {
-  font-size: clamp(1.9rem, 1.25rem + 2.5vw, 3.5rem);
+  font-size: clamp(1.45rem, 1.6vw, 1.65rem);
+  white-space: nowrap;
 }
 
 .page--booking .booking {
-  padding-block: clamp(0.65rem, 1.5vw, 1.25rem) clamp(3rem, 6vw, 5rem);
+  padding-block: 0 clamp(3rem, 6vw, 5rem);
 }
 
 .booking__grid {
@@ -101,6 +102,12 @@
   background: var(--glass);
   backdrop-filter: blur(16px) saturate(1.2);
   box-shadow: var(--shadow);
+}
+
+@media (min-width: 901px) {
+  .page--booking .form {
+    margin-top: clamp(-5.75rem, -6vw, -4.5rem);
+  }
 }
 
 .form__row {
@@ -305,6 +312,18 @@
 
   .booking__grid {
     grid-template-columns: 1fr;
+  }
+
+  .page--booking .page-head__title {
+    white-space: normal;
+  }
+
+  .page--booking .form {
+    grid-row: 1;
+  }
+
+  .page--booking .booking__info {
+    grid-row: 2;
   }
 }
 
