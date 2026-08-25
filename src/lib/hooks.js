@@ -4,6 +4,21 @@ const REDUCED = () =>
   typeof window !== "undefined" &&
   window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
+export function useReducedMotion() {
+  const [reducedMotion, setReducedMotion] = useState(REDUCED)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const updatePreference = () => setReducedMotion(mediaQuery.matches)
+
+    updatePreference()
+    mediaQuery.addEventListener("change", updatePreference)
+    return () => mediaQuery.removeEventListener("change", updatePreference)
+  }, [])
+
+  return reducedMotion
+}
+
 /**
  * Навешивает класс `is-visible` на все .reveal внутри контейнера,
  * когда они входят в область просмотра. Возвращает ref для контейнера;

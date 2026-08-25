@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
 import { NavLink, Link, useLocation } from "react-router-dom"
-import { useReducedMotion } from "framer-motion"
 import { COMPANY, NAV } from "@/data/site"
-import { useActiveSection } from "@/lib/hooks"
+import { useActiveSection, useReducedMotion } from "@/lib/hooks"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)

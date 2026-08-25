@@ -25,9 +25,7 @@
     "density": "unknown"
   },
   "components": {
-    "installed": [
-      "TextDisperse"
-    ],
+    "installed": [],
     "preferredPrimitives": [],
     "patterns": []
   },
@@ -88,13 +86,18 @@
     },
     {
       "area": "hero-white-slogan-hover",
-      "decision": "Treat all four white hero lines as one Text Disperse hover region: entering anywhere in the phrase disperses every character together, then restores them with the same 750ms easing; disable the effect for touch and reduced motion.",
-      "reason": "Matches the requested phrase-wide interaction while preserving line breaks, mobile readability, and the static screen-reader heading."
+      "decision": "Render all four white hero lines as stable text without a hover dispersion effect.",
+      "reason": "Final user revision removes the character breakup animation entirely."
     },
     {
       "area": "animated-header-logo",
-      "decision": "Replace the static header mark with the supplied 5.8-second animation, chroma-keyed into a 640×360 transparent VP9 WebM, enlarged responsively, muted and looped; keep the original image for reduced motion and fallback.",
+      "decision": "Use the supplied transparent animated logo at 190–240px on desktop and 176px on mobile, muted and looped; keep the original image for reduced motion and fallback.",
       "reason": "Uses the supplied brand motion without green spill, audio, layout shift, or forced animation for motion-sensitive visitors."
+    },
+    {
+      "area": "hero-benefit-copy",
+      "decision": "Use three concise benefit statements with a bold lead claim followed by a regular-weight supporting sentence.",
+      "reason": "Creates clear scan hierarchy while preserving the exact customer-facing copy selected by the user."
     }
   ],
   "evidence": [

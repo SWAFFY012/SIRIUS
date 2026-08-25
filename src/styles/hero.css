@@ -45,11 +45,9 @@
   min-height: 1.02em;
 }
 
-.hero__disperse-phrase {
+.hero__slogan-lines {
   display: grid;
   gap: 0.08em;
-  width: fit-content;
-  max-width: 100%;
 }
 
 .hero__typeword {
@@ -384,8 +382,12 @@
   border-bottom: 1px solid var(--gold-line);
   color: var(--text);
   font-size: clamp(0.78rem, 0.72rem + 0.2vw, 0.9rem);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.4;
+}
+
+.hero__benefit-copy b {
+  font-weight: 800;
 }
 
 .hero__benefit svg {

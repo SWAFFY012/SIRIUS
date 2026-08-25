@@ -33,7 +33,7 @@
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: clamp(158px, 10.5vw, 190px);
+  width: clamp(190px, 13vw, 240px);
   aspect-ratio: 16 / 9;
   transition: opacity var(--fast) var(--ease);
 }
@@ -382,7 +382,7 @@
   }
 
   .header__logo {
-    width: 146px;
+    width: 176px;
   }
 
   .footer__social-col {

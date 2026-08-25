@@ -1,19 +1,7 @@
-import { useState } from "react"
 import { Link } from "react-router-dom"
 import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
-import TextDisperse from "@/components/ui/TextDisperse"
 
 export default function Hero() {
-  const [phraseDispersed, setPhraseDispersed] = useState(false)
-
-  const handlePhraseEnter = (event) => {
-    if (event.pointerType === "mouse") setPhraseDispersed(true)
-  }
-
-  const handlePhraseLeave = (event) => {
-    if (event.pointerType === "mouse") setPhraseDispersed(false)
-  }
-
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
       <div className="container hero__inner">
@@ -26,21 +14,11 @@ export default function Hero() {
             <span className="accent hero__typeword">{HERO_SLOGAN.typeword}</span>
           </span>
 
-          <span
-            className="hero__disperse-phrase"
-            aria-hidden="true"
-            onPointerEnter={handlePhraseEnter}
-            onPointerLeave={handlePhraseLeave}
-          >
-            {HERO_SLOGAN.lines.map((line, index) => (
-              <TextDisperse
-                key={line}
-                className="hero__line is-in"
-                active={phraseDispersed}
-                transformOffset={HERO_SLOGAN.lines.slice(0, index).join("").length}
-              >
+          <span className="hero__slogan-lines" aria-hidden="true">
+            {HERO_SLOGAN.lines.map((line) => (
+              <span key={line} className="hero__line is-in">
                 {line}
-              </TextDisperse>
+              </span>
             ))}
           </span>
         </h1>
@@ -56,11 +34,13 @@ export default function Hero() {
 
         <ul className="hero__benefits" aria-label="Преимущества компании">
           {HERO_BENEFITS.map((benefit, index) => (
-            <li key={benefit} className="hero__benefit reveal" style={{ "--reveal-delay": `${700 + index * 90}ms` }}>
+            <li key={benefit.title} className="hero__benefit reveal" style={{ "--reveal-delay": `${700 + index * 90}ms` }}>
               <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span>{benefit}</span>
+              <span className="hero__benefit-copy">
+                <b>{benefit.title}</b> {benefit.text}
+              </span>
             </li>
           ))}
         </ul>
