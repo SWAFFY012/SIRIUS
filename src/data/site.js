@@ -56,7 +56,7 @@ export const HERO_BENEFITS = [
 export const SOCIALS = [
   { label: "Instagram", handle: "@rcc_sirius", href: "https://www.instagram.com/rcc_sirius/" },
   { label: "Telegram", handle: "@sirius_road", href: "https://t.me/sirius_road" },
-  { label: "ВКонтакте", handle: "vk.ru/club241035061", href: "https://vk.ru/club241035061" },
+  { label: "ВКонтакте", handle: "vk.ru/rcc.sirius", href: "https://vk.ru/rcc.sirius" },
   { label: "WhatsApp", handle: COMPANY.phone, href: "https://wa.me/79811977287" },
 ];
 
