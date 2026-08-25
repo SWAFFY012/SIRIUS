@@ -98,6 +98,11 @@
       "area": "hero-benefit-copy",
       "decision": "Use three concise benefit statements with a bold lead claim followed by a regular-weight supporting sentence.",
       "reason": "Creates clear scan hierarchy while preserving the exact customer-facing copy selected by the user."
+    },
+    {
+      "area": "price-hierarchy-and-summary",
+      "decision": "Unify the full-price, calculator, and terms heading scale; use the body typeface for all prices and row numbers; keep the desktop estimate column at the same fixed visual height as the work list.",
+      "reason": "Makes pricing easier to scan and keeps the image, total, and estimate CTA stable while the work list scrolls independently."
     }
   ],
   "evidence": [

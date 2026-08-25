@@ -235,3 +235,106 @@
     border-color: var(--line);
   }
 }
+
+/* Финальная иерархия прайса: одинаковые заголовки и устойчивый правый итог. */
+.full-price__head h1,
+.price-calc__head h2,
+.terms__title {
+  font-size: clamp(1.9rem, 1.2rem + 2.2vw, 3rem);
+  line-height: 1.08;
+}
+
+.price-calc__legend {
+  font-size: clamp(0.82rem, 0.74rem + 0.24vw, 0.95rem);
+  letter-spacing: 0.12em;
+}
+
+.price-calc__categories > .price-calc__legend,
+.price-calc__works-head {
+  padding-bottom: 1rem;
+}
+
+.price-calc__category-num,
+.price-option__body > i,
+.price-option > label > strong,
+.price-option__qty > b,
+.price-calc__result > strong,
+.price-list summary > span,
+.price-list__row > span,
+.price-list__row > strong {
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums;
+}
+
+.price-calc__category-num,
+.price-list summary > span,
+.price-list__row > span {
+  font-weight: 700;
+}
+
+@media (min-width: 1121px) {
+  .price-calc__layout {
+    min-height: 520px;
+  }
+
+  .price-calc__summary {
+    position: sticky;
+    top: calc(var(--header-h) + 1rem);
+    align-self: start;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+    height: 100%;
+  }
+
+  .price-calc__visual {
+    min-height: 330px;
+  }
+
+  .price-calc__result {
+    align-content: end;
+    padding-top: 0.75rem;
+  }
+
+  .price-calc__result .btn {
+    margin-top: 0.35rem;
+  }
+}
+
+.terms__row {
+  padding-block: 1.25rem;
+}
+
+.terms__row dt {
+  font-size: clamp(1.02rem, 0.94rem + 0.35vw, 1.25rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.terms__row dd {
+  font-size: clamp(0.94rem, 0.88rem + 0.24vw, 1.08rem);
+  line-height: 1.65;
+}
+
+@media (max-width: 760px) {
+  .full-price__head h1,
+  .price-calc__head h2,
+  .terms__title {
+    font-size: clamp(1.65rem, 7.2vw, 2.15rem);
+  }
+
+  .price-calc__legend {
+    font-size: 0.82rem;
+  }
+
+  .price-calc__summary {
+    position: static;
+  }
+
+  .price-calc__visual {
+    min-height: 300px;
+  }
+
+  .price-calc__result {
+    padding-top: 0.75rem;
+  }
+}

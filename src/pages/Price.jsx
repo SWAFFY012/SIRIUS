@@ -51,7 +51,6 @@ function PriceCalculator({ selected, onToggle, onQty }) {
         <section className="price-calc__works" aria-label={activeSection.title}>
           <div className="price-calc__works-head">
             <span className="price-calc__legend">Выберите работы</span>
-            <b>{activeSection.items.length} позиций</b>
           </div>
           <div className="price-calc__options">
             {activeSection.items.map((item) => {
@@ -84,9 +83,7 @@ function PriceCalculator({ selected, onToggle, onQty }) {
             <figcaption>{activeSection.title}</figcaption>
           </figure>
           <div className="price-calc__result">
-            <span className="price-calc__legend">Предварительная стоимость</span>
             <strong className={picked.length ? "" : "is-empty"}>{picked.length ? `от ${money(total)} ₽` : "Выберите работы"}</strong>
-            {picked.length > 0 && <p>{picked.length} {picked.length === 1 ? "позиция" : picked.length < 5 ? "позиции" : "позиций"} в расчёте</p>}
             <Link to="/booking" className="btn btn--gold">Запросить смету</Link>
           </div>
         </aside>
