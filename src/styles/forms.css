@@ -2,18 +2,8 @@
    forms.css — заявка и контакты
    ============================================================ */
 
-.page--booking .page-head {
-  padding-block: calc(var(--header-h) + clamp(1rem, 2vw, 1.75rem)) 0.6rem;
-}
-
-.page--booking .page-head__title {
-  font-size: clamp(2.4rem, 4.6vw, 4.6rem);
-  line-height: 0.98;
-  white-space: nowrap;
-}
-
 .page--booking .booking {
-  padding-block: 0 clamp(3rem, 6vw, 5rem);
+  padding-block: calc(var(--header-h) + clamp(1.25rem, 2.5vw, 2rem)) clamp(3rem, 6vw, 5rem);
 }
 
 .booking__grid {
@@ -23,10 +13,25 @@
   align-items: start;
 }
 
-.booking__info h2 {
-  font-size: clamp(1.5rem, 1.15rem + 1.25vw, 2.25rem);
-  line-height: 1.08;
+.booking__title,
+.booking__info h2,
+.page--contacts .page-head__title {
+  font-size: clamp(1.85rem, 1.4rem + 1.6vw, 2.9rem);
+  line-height: 1.05;
   text-transform: uppercase;
+}
+
+.booking__title {
+  margin: 0;
+}
+
+.booking__form-column {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.booking__info h2 {
   margin-bottom: 1.25rem;
 }
 
@@ -104,12 +109,6 @@
   background: var(--glass);
   backdrop-filter: blur(16px) saturate(1.2);
   box-shadow: var(--shadow);
-}
-
-@media (min-width: 901px) {
-  .page--booking .form {
-    margin-top: 0;
-  }
 }
 
 @media (min-width: 1100px) {
@@ -322,7 +321,7 @@
 }
 
 @media (max-width: 900px) {
-  .page--booking .page-head {
+  .page--booking .booking {
     padding-top: calc(var(--header-h-mob) + 1rem);
   }
 
@@ -330,11 +329,7 @@
     grid-template-columns: 1fr;
   }
 
-  .page--booking .page-head__title {
-    white-space: normal;
-  }
-
-  .page--booking .form {
+  .page--booking .booking__form-column {
     grid-row: 1;
   }
 
@@ -349,10 +344,6 @@
 
 .page--contacts .page-head {
   padding-block: calc(var(--header-h) + clamp(0.75rem, 1.5vw, 1.25rem)) 0.5rem;
-}
-
-.page--contacts .page-head__title {
-  font-size: clamp(1.7rem, 2vw, 2.2rem);
 }
 
 .page--contacts .contacts {

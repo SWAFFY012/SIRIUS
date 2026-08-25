@@ -1,6 +1,5 @@
 import { useState } from "react"
 import ScrollScene from "@/components/ScrollScene"
-import PageHead from "@/components/PageHead"
 import { COMPANY } from "@/data/site"
 import { PRICE_SECTIONS } from "@/data/price"
 import { useReveal } from "@/lib/hooks"
@@ -67,8 +66,6 @@ export default function Booking() {
     <>
       <ScrollScene startScene={4} />
       <main className="page page--booking" ref={ref}>
-        <PageHead title="Оставить заявку" />
-
         <section className="section booking" data-nav="/booking" data-scene={4}>
           <div className="container booking__grid">
             <aside className="booking__info reveal">
@@ -102,7 +99,9 @@ export default function Booking() {
               </div>
             </aside>
 
-            <form className="form reveal" onSubmit={onSubmit} noValidate>
+            <div className="booking__form-column">
+              <h1 className="booking__title reveal">Оставить заявку</h1>
+              <form className="form reveal" onSubmit={onSubmit} noValidate>
               <div className="form__row">
                 <label className="form__field">
                   <span>
@@ -206,7 +205,8 @@ export default function Booking() {
                   {status.message}
                 </p>
               )}
-            </form>
+              </form>
+            </div>
           </div>
         </section>
       </main>
