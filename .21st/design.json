@@ -88,8 +88,13 @@
     },
     {
       "area": "hero-white-slogan-hover",
-      "decision": "Apply the selected Text Disperse character transforms to each white hero line on mouse hover, then restore every character with the same 750ms easing; disable the effect for touch and reduced motion.",
-      "reason": "Matches the supplied reference while preserving the existing line breaks, mobile readability, and static screen-reader heading."
+      "decision": "Treat all four white hero lines as one Text Disperse hover region: entering anywhere in the phrase disperses every character together, then restores them with the same 750ms easing; disable the effect for touch and reduced motion.",
+      "reason": "Matches the requested phrase-wide interaction while preserving line breaks, mobile readability, and the static screen-reader heading."
+    },
+    {
+      "area": "animated-header-logo",
+      "decision": "Replace the static header mark with the supplied 5.8-second animation, chroma-keyed into a 640×360 transparent VP9 WebM, enlarged responsively, muted and looped; keep the original image for reduced motion and fallback.",
+      "reason": "Uses the supplied brand motion without green spill, audio, layout shift, or forced animation for motion-sensitive visitors."
     }
   ],
   "evidence": [

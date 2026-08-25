@@ -19,16 +19,18 @@ const TRANSFORMS = [
 
 const TRANSITION = { duration: 0.75, ease: [0.33, 1, 0.68, 1] }
 
-export default function TextDisperse({ children, className = "", ...props }) {
-  const [isAnimated, setIsAnimated] = useState(false)
+export default function TextDisperse({ children, className = "", active, transformOffset = 0, ...props }) {
+  const [internalActive, setInternalActive] = useState(false)
   const reducedMotion = useReducedMotion()
+  const isControlled = typeof active === "boolean"
+  const isAnimated = !reducedMotion && (isControlled ? active : internalActive)
 
   const handlePointerEnter = (event) => {
-    if (event.pointerType === "mouse" && !reducedMotion) setIsAnimated(true)
+    if (!isControlled && event.pointerType === "mouse" && !reducedMotion) setInternalActive(true)
   }
 
   const handlePointerLeave = (event) => {
-    if (event.pointerType === "mouse") setIsAnimated(false)
+    if (!isControlled && event.pointerType === "mouse") setInternalActive(false)
   }
 
   return (
@@ -39,7 +41,7 @@ export default function TextDisperse({ children, className = "", ...props }) {
       {...props}
     >
       {Array.from(children).map((char, index) => {
-        const transform = TRANSFORMS[index % TRANSFORMS.length]
+        const transform = TRANSFORMS[(index + transformOffset) % TRANSFORMS.length]
 
         return (
           <motion.span

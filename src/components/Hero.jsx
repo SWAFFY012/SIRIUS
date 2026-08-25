@@ -1,8 +1,19 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
 import TextDisperse from "@/components/ui/TextDisperse"
 
 export default function Hero() {
+  const [phraseDispersed, setPhraseDispersed] = useState(false)
+
+  const handlePhraseEnter = (event) => {
+    if (event.pointerType === "mouse") setPhraseDispersed(true)
+  }
+
+  const handlePhraseLeave = (event) => {
+    if (event.pointerType === "mouse") setPhraseDispersed(false)
+  }
+
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
       <div className="container hero__inner">
@@ -15,16 +26,23 @@ export default function Hero() {
             <span className="accent hero__typeword">{HERO_SLOGAN.typeword}</span>
           </span>
 
-          {HERO_SLOGAN.lines.map((line, i) => (
-            <TextDisperse
-              key={line}
-              className="hero__line is-in"
-              style={{ "--line-delay": `${i * 130}ms` }}
-              aria-hidden="true"
-            >
-              {line}
-            </TextDisperse>
-          ))}
+          <span
+            className="hero__disperse-phrase"
+            aria-hidden="true"
+            onPointerEnter={handlePhraseEnter}
+            onPointerLeave={handlePhraseLeave}
+          >
+            {HERO_SLOGAN.lines.map((line, index) => (
+              <TextDisperse
+                key={line}
+                className="hero__line is-in"
+                active={phraseDispersed}
+                transformOffset={HERO_SLOGAN.lines.slice(0, index).join("").length}
+              >
+                {line}
+              </TextDisperse>
+            ))}
+          </span>
         </h1>
 
         <div className="hero__cta reveal" style={{ "--reveal-delay": "620ms" }}>
