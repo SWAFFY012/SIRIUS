@@ -259,8 +259,8 @@
   inset: 0;
   z-index: 3;
   background:
-    radial-gradient(120% 90% at 18% 12%, rgba(10, 10, 11, 0.1) 0%, rgba(10, 10, 11, 0.58) 62%, rgba(10, 10, 11, 0.82) 100%),
-    linear-gradient(180deg, rgba(10, 10, 11, 0.72) 0%, rgba(10, 10, 11, 0.3) 26%, rgba(10, 10, 11, 0.44) 62%, rgba(10, 10, 11, 0.84) 100%);
+    radial-gradient(120% 90% at 18% 12%, rgba(10, 10, 11, 0.08) 0%, rgba(10, 10, 11, 0.34) 62%, rgba(10, 10, 11, 0.58) 100%),
+    linear-gradient(180deg, rgba(10, 10, 11, 0.44) 0%, rgba(10, 10, 11, 0.16) 26%, rgba(10, 10, 11, 0.28) 62%, rgba(10, 10, 11, 0.64) 100%);
 }
 
 .scroll-scene__grain {

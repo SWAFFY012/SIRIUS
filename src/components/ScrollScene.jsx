@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import { SCENES } from "@/data/site"
+import { useReducedMotion } from "@/lib/hooks"
 
 /**
  * Фиксированный фоновый слой страницы.
@@ -13,6 +14,7 @@ import { SCENES } from "@/data/site"
  * @param {number}  startScene — индекс сцены для страниц без видео.
  */
 export default function ScrollScene({ withVideo = false, startScene = 0 }) {
+  const reducedMotion = useReducedMotion()
   const sceneRef = useRef(null)
   const videoRef = useRef(null)
   const layerARef = useRef(null)
@@ -30,6 +32,12 @@ export default function ScrollScene({ withVideo = false, startScene = 0 }) {
   useEffect(() => {
     const video = videoRef.current
     if (!video) return undefined
+
+    if (reducedMotion) {
+      video.pause()
+      video.currentTime = 0
+      return undefined
+    }
 
     const kick = () => {
       video.play().catch(() => {})
@@ -49,7 +57,7 @@ export default function ScrollScene({ withVideo = false, startScene = 0 }) {
       video.removeEventListener("ended", onEnded)
       document.removeEventListener("visibilitychange", onVisibility)
     }
-  }, [withVideo])
+  }, [withVideo, reducedMotion])
 
   useEffect(() => {
     const scene = sceneRef.current
@@ -152,7 +160,7 @@ export default function ScrollScene({ withVideo = false, startScene = 0 }) {
         <video
           ref={videoRef}
           className="scroll-scene__video"
-          autoPlay
+          autoPlay={!reducedMotion}
           muted
           loop
           playsInline
