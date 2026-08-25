@@ -489,6 +489,7 @@
   }
 
   .hero__calculator {
+    order: -1;
     min-height: 76px;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
