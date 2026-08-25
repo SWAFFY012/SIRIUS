@@ -50,45 +50,35 @@
   letter-spacing: -0.03em;
   background-image: linear-gradient(
     90deg,
-    var(--gold-hi) 0 44%,
-    var(--type-sweep-1) 47%,
-    var(--type-sweep-2) 51%,
-    var(--type-sweep-3) 55%,
-    var(--type-sweep-4) 59%,
-    var(--type-sweep-5) 63%,
-    transparent 69% 100%
+    var(--gold-deep) 0%,
+    var(--gold) 36%,
+    var(--gold-hi) 52%,
+    var(--gold-2) 68%,
+    var(--gold) 100%
   );
-  background-size: 240% 100%;
-  animation: hero-type-sweep 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-  will-change: opacity, transform, filter, background-position;
+  background-size: 180% 100%;
+  animation: hero-type-sweep 5.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path, background-position;
 }
 
 @keyframes hero-type-sweep {
   0%,
-  6% {
-    opacity: 0;
+  8% {
+    clip-path: inset(0 100% 0 0);
     background-position: 100% 50%;
-    filter: blur(6px);
-    transform: translateY(0.1em);
   }
 
-  14% {
-    opacity: 1;
-  }
-
-  62%,
-  86% {
-    opacity: 1;
+  38%,
+  66% {
+    clip-path: inset(0 0 0 0);
     background-position: 0% 50%;
-    filter: blur(0);
-    transform: none;
   }
 
+  96%,
   100% {
-    opacity: 0;
-    background-position: 0% 50%;
-    filter: blur(0);
-    transform: translateY(-0.04em);
+    clip-path: inset(0 100% 0 0);
+    background-position: 100% 50%;
   }
 }
 
@@ -99,8 +89,7 @@
     -webkit-background-clip: text;
     background-clip: text;
     opacity: 1;
-    filter: none;
-    transform: none;
+    clip-path: none;
   }
 }
 

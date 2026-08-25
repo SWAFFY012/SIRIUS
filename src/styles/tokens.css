@@ -14,11 +14,6 @@
   --gold-line: rgba(201, 162, 39, 0.28);
   --gold-glow: rgba(201, 162, 39, 0.35);
   --gold-grad: linear-gradient(135deg, var(--gold-hi) 0%, var(--gold-2) 38%, var(--gold) 68%, var(--gold-deep) 100%);
-  --type-sweep-1: #c679c4;
-  --type-sweep-2: #fa3d1d;
-  --type-sweep-3: #ffb005;
-  --type-sweep-4: #e1e1fe;
-  --type-sweep-5: #0358f7;
 
   /* ── графит с тёплым отливом ── */
   --bg: #0a0a0b;
