@@ -9,10 +9,6 @@ export default function ServicesSection({ scene = 0, withHeading = true }) {
         {withHeading && (
           <header className="section__head reveal">
             <h2 className="section__title">Услуги компании</h2>
-            <p className="section__lead">
-              Работаем по Санкт-Петербургу и Ленинградской области: от подготовки основания
-              до финишного покрытия и благоустройства. Своя техника, договор и гарантия.
-            </p>
           </header>
         )}
 

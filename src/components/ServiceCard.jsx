@@ -58,18 +58,23 @@ export default function ServiceCard({ service, index }) {
         </div>
 
         {canFlip && (
-          <div className="svc__face svc__face--back" id={backId} aria-hidden={!flipped}>
+          <div
+            className="svc__face svc__face--back"
+            id={backId}
+            role="button"
+            tabIndex={flipped ? 0 : -1}
+            aria-hidden={!flipped}
+            aria-label="Вернуться к описанию услуги"
+            onClick={() => setFlipped(false)}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                setFlipped(false)
+              }
+            }}
+          >
             <div className="svc__back-head">
               <h3>{service.flip.title}</h3>
-              <button
-                type="button"
-                className="svc__close"
-                onClick={() => setFlipped(false)}
-                aria-label="Вернуться к описанию услуги"
-                tabIndex={flipped ? 0 : -1}
-              >
-                ×
-              </button>
             </div>
 
             <div className="svc__price-sheet">

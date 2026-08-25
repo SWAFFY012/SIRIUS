@@ -42,9 +42,13 @@
 @media(prefers-reduced-motion:reduce){.price-calc__categories button::before,.price-option::before,.price-calc__visual img{transition:none}}
 
 /* Светлая прозрачная версия калькулятора; прайс теперь открывает страницу. */
+.price {
+  padding-top: 0;
+}
+
 .full-price {
   margin-top: 0;
-  padding-top: calc(var(--header-h) + clamp(1.5rem, 4vw, 3.5rem));
+  padding-top: calc(var(--header-h) + clamp(0.5rem, 1.5vw, 1.25rem));
 }
 
 .full-price__head h1 {
@@ -115,7 +119,7 @@
 
 @media (max-width: 760px) {
   .full-price {
-    padding-top: calc(var(--header-h-mob) + 1.5rem);
+    padding-top: calc(var(--header-h-mob) + 0.75rem);
   }
 
   .full-price__head h1,

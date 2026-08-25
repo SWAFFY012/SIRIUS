@@ -25,7 +25,7 @@
 .cases {
   display: grid;
   gap: clamp(3rem, 7vw, 6rem);
-  padding-block: clamp(1.5rem, 4vw, 3rem) clamp(3rem, 6vw, 5rem);
+  padding-block: clamp(0.35rem, 1vw, 0.75rem) clamp(3rem, 6vw, 5rem);
 }
 
 /* grid-элементы по умолчанию min-width:auto и растягиваются под
@@ -37,8 +37,8 @@
 }
 
 .case__head {
-  margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
-  padding-bottom: 1.1rem;
+  margin-bottom: clamp(0.45rem, 1vw, 0.75rem);
+  padding-bottom: 0.65rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -50,7 +50,8 @@
 .case__region {
   margin-top: 0.4rem;
   font-family: var(--font);
-  font-size: 0.76rem;
+  font-size: clamp(0.95rem, 0.88rem + 0.28vw, 1.12rem);
+  font-weight: 600;
   color: var(--gold);
 }
 

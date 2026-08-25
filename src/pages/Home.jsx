@@ -11,7 +11,7 @@ export default function Home() {
       <ScrollScene withVideo startScene={0} />
       <main className="page" ref={ref}>
         <Hero />
-        <ServicesSection scene={0} />
+        <ServicesSection scene={1} />
       </main>
     </>
   )

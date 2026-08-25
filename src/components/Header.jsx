@@ -29,10 +29,17 @@ export default function Header() {
   const isActive = (item, routeActive) =>
     activeSection ? activeSection === item.to : routeActive
 
+  const handleNavClick = (item) => {
+    setOpen(false)
+    if (item.to === "/" && pathname === "/") {
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" })
+    }
+  }
+
   return (
     <header className={`header${scrolled ? " is-scrolled" : ""}`}>
       <div className="container header__inner">
-        <Link to="/" className="header__logo" aria-label={`${COMPANY.name} — на главную`}>
+        <Link to="/" className="header__logo" aria-label={`${COMPANY.name} — на главную`} onClick={() => handleNavClick(NAV[0])}>
           {reducedMotion ? (
             <img
               className="header__logo-media"
@@ -43,21 +50,14 @@ export default function Header() {
               decoding="async"
             />
           ) : (
-            <video
+            <img
               className="header__logo-media"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="auto"
-              poster="/logo/sirius-logo.png"
-              width="640"
-              height="360"
-              aria-hidden="true"
-            >
-              <source src="/logo/sirius-logo-animated.webm" type="video/webm" />
-              <img src="/logo/sirius-logo.png" alt="" />
-            </video>
+              src="/logo/sirius-logo-animated.webp"
+              alt=""
+              width="400"
+              height="225"
+              decoding="async"
+            />
           )}
         </Link>
 
@@ -67,6 +67,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               end={item.end}
+              onClick={() => handleNavClick(item)}
               className={({ isActive: routeActive }) =>
                 `header__link${isActive(item, routeActive) ? " is-active" : ""}`
               }
@@ -105,7 +106,7 @@ export default function Header() {
               key={item.to}
               to={item.to}
               end={item.end}
-              onClick={() => setOpen(false)}
+              onClick={() => handleNavClick(item)}
               className={({ isActive: routeActive }) =>
                 `header__drawer-link${isActive(item, routeActive) ? " is-active" : ""}`
               }

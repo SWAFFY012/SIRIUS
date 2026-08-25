@@ -11,10 +11,7 @@ export default function Cases() {
     <>
       <ScrollScene startScene={2} />
       <main className="page" ref={ref}>
-        <PageHead
-          title="Кейсы"
-          lead="Объекты в Санкт-Петербурге и Ленинградской области: дорожное покрытие, проезды, площадки и благоустройство."
-        />
+        <PageHead title="Кейсы" />
 
         <div className="cases">
           {CASES.map((item, index) => (

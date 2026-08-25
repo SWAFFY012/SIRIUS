@@ -108,6 +108,16 @@
       "area": "hero-background-video",
       "decision": "Use the supplied VIDEO HERO SIRIUS MP4 byte-for-byte as the hero background, with a lighter layered scrim and a paused first frame for reduced-motion visitors.",
       "reason": "Preserves the exact source quality while revealing more image detail without sacrificing text readability or motion accessibility."
+    },
+    {
+      "area": "navigation-and-section-continuity",
+      "decision": "Make repeated activation of the home link scroll to the hero, use the same scene and text treatment for home and routed services, and let service price cards toggle from either face without a close icon.",
+      "reason": "Removes route-state dead ends and keeps scrolling, direct navigation, mouse, keyboard, and touch interactions consistent."
+    },
+    {
+      "area": "compact-page-alignment",
+      "decision": "Lift case carousels and the full price list, enlarge gold case locations, remove the gray cases lead, and bottom-align the contacts CTA with the map.",
+      "reason": "Tightens page entry points and creates clearer vertical alignment across cases, pricing, and contacts."
     }
   ],
   "evidence": [

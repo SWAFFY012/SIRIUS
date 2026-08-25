@@ -144,25 +144,6 @@
   color: var(--gold-hi);
 }
 
-.svc__close {
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  margin: -0.4rem -0.4rem 0 0;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: var(--muted);
-  transition: color var(--fast) var(--ease), background var(--fast) var(--ease);
-}
-
-.svc__close:hover {
-  color: var(--text);
-  background: rgba(255, 255, 255, 0.08);
-}
-
 .svc__rows {
   display: grid;
   gap: 0.4rem;
@@ -475,12 +456,6 @@
   text-transform: uppercase;
 }
 
-.svc__close {
-  width: 32px;
-  height: 32px;
-  margin: 0;
-}
-
 .svc__price-sheet {
   min-height: 0;
   display: grid;
@@ -571,12 +546,6 @@
   .svc__back-head h3 {
     font-size: 0.58rem;
     line-height: 1.15;
-  }
-
-  .svc__close {
-    width: 44px;
-    height: 44px;
-    font-size: 1.2rem;
   }
 
   .svc__price-sheet {

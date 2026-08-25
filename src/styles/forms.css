@@ -360,6 +360,13 @@
 .contacts__info {
   display: grid;
   gap: 0.75rem;
+  min-height: clamp(430px, 65vh, 520px);
+}
+
+.contacts__info > .btn {
+  align-self: end;
+  justify-self: start;
+  margin-top: auto;
 }
 
 .contacts__item b {
@@ -475,6 +482,14 @@
 
   .contacts__socials {
     grid-template-columns: 1fr;
+  }
+
+  .contacts__info {
+    min-height: 0;
+  }
+
+  .contacts__info > .btn {
+    margin-top: 0.75rem;
   }
 
   .contacts__map {
