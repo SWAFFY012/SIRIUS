@@ -81,8 +81,8 @@
     },
     {
       "area": "hero-typewriter",
-      "decision": "Keep ДОРОГА gold and loop one lightweight sweep: reveal left-to-right, hold fully visible, then erase right-to-left with the same motion.",
-      "reason": "Preserves the selected whole-word reveal while removing blur and multicolor repainting for a smoother reverse cycle."
+      "decision": "Keep ДОРОГА gold while settled, but use the exact Dia Text reference palette (#c679c4, #fa3d1d, #ffb005, #e1e1fe, #0358f7) in the forward and reverse sweep.",
+      "reason": "Matches the supplied reference colors without losing the approved gold resting state or lightweight reverse animation."
     }
   ],
   "evidence": [

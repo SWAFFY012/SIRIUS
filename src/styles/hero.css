@@ -50,13 +50,15 @@
   letter-spacing: -0.03em;
   background-image: linear-gradient(
     90deg,
-    var(--gold-deep) 0%,
-    var(--gold) 36%,
-    var(--gold-hi) 52%,
-    var(--gold-2) 68%,
-    var(--gold) 100%
+    var(--gold-hi) 0 44%,
+    var(--type-sweep-1) 47%,
+    var(--type-sweep-2) 51%,
+    var(--type-sweep-3) 55%,
+    var(--type-sweep-4) 59%,
+    var(--type-sweep-5) 63%,
+    transparent 69% 100%
   );
-  background-size: 180% 100%;
+  background-size: 240% 100%;
   animation: hero-type-sweep 5.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   clip-path: inset(0 100% 0 0);
   will-change: clip-path, background-position;
