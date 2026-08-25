@@ -1,0 +1,22 @@
+.text-disperse {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  max-width: 100%;
+  white-space: pre;
+  cursor: default;
+  isolation: isolate;
+}
+
+.text-disperse__char {
+  position: relative;
+  display: inline-block;
+  will-change: transform;
+}
+
+@media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .text-disperse__char {
+    transform: none !important;
+    will-change: auto;
+  }
+}

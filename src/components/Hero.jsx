@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
+import TextDisperse from "@/components/ui/TextDisperse"
 
 export default function Hero() {
   return (
@@ -15,14 +16,14 @@ export default function Hero() {
           </span>
 
           {HERO_SLOGAN.lines.map((line, i) => (
-            <span
+            <TextDisperse
               key={line}
               className="hero__line is-in"
               style={{ "--line-delay": `${i * 130}ms` }}
               aria-hidden="true"
             >
               {line}
-            </span>
+            </TextDisperse>
           ))}
         </h1>
 

@@ -25,7 +25,9 @@
     "density": "unknown"
   },
   "components": {
-    "installed": [],
+    "installed": [
+      "TextDisperse"
+    ],
     "preferredPrimitives": [],
     "patterns": []
   },
@@ -83,6 +85,11 @@
       "area": "hero-typewriter",
       "decision": "Keep ДОРОГА gold while settled, but use the exact Dia Text reference palette (#c679c4, #fa3d1d, #ffb005, #e1e1fe, #0358f7) in the forward and reverse sweep.",
       "reason": "Matches the supplied reference colors without losing the approved gold resting state or lightweight reverse animation."
+    },
+    {
+      "area": "hero-white-slogan-hover",
+      "decision": "Apply the selected Text Disperse character transforms to each white hero line on mouse hover, then restore every character with the same 750ms easing; disable the effect for touch and reduced motion.",
+      "reason": "Matches the supplied reference while preserving the existing line breaks, mobile readability, and static screen-reader heading."
     }
   ],
   "evidence": [
