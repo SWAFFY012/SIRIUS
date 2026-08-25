@@ -33,7 +33,7 @@
   flex: 0 0 auto;
   display: grid;
   place-items: center;
-  width: clamp(290px, 18vw, 330px);
+  width: clamp(230px, 16vw, 260px);
   height: 100%;
   overflow: hidden;
   transition: opacity var(--fast) var(--ease);
@@ -48,7 +48,7 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  transform: translateY(-9px);
+  transform: translateY(-3px);
   filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.42))
     drop-shadow(0 3px 10px rgba(0, 0, 0, 0.6));
 }
@@ -384,11 +384,11 @@
   }
 
   .header__logo {
-    width: clamp(235px, 70vw, 275px);
+    width: clamp(205px, 62vw, 230px);
   }
 
   .header__logo-media {
-    transform: translateY(-11px);
+    transform: translateY(-4px);
   }
 
   .footer__social-col {
