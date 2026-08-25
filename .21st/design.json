@@ -78,6 +78,11 @@
       "area": "contacts-above-fold",
       "decision": "Remove the contact-page lead, use a compact title, lift contact details and map directly beneath it, and render all contact values in high-contrast text.",
       "reason": "The complete contact block and map should read as one screen, matching the compact booking-page composition."
+    },
+    {
+      "area": "hero-typewriter",
+      "decision": "Loop the word ДОРОГА through type, hold, and erase phases, with a restrained multicolor sweep adapted from the selected Dia Text reference.",
+      "reason": "Keeps the user-selected animated focal point while preserving the established hero layout and a static reduced-motion fallback."
     }
   ],
   "evidence": [

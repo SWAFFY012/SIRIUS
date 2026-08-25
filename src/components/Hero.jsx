@@ -3,7 +3,12 @@ import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
 import { useTypewriter } from "@/lib/hooks"
 
 export default function Hero() {
-  const [, typed, done] = useTypewriter(HERO_SLOGAN.typeword)
+  const [, typed, done] = useTypewriter(HERO_SLOGAN.typeword, {
+    loop: true,
+    hold: 1600,
+    eraseSpeed: 62,
+    loopDelay: 420,
+  })
 
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
@@ -15,7 +20,7 @@ export default function Hero() {
 
           <span className="hero__type-line" aria-hidden="true">
             <span className="accent hero__typeword">{typed}</span>
-            <span className={`hero__caret${done ? " is-done" : ""}`} />
+            <span className="hero__caret" />
           </span>
 
           {HERO_SLOGAN.lines.map((line, i) => (
