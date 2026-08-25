@@ -28,7 +28,7 @@ function PriceCalculator({ selected, onToggle, onQty }) {
   const total = picked.reduce((sum, item) => sum + item.price * selected[item.n], 0)
 
   return (
-    <div className="price-calc reveal" aria-labelledby="price-calc-title">
+    <div className="price-calc reveal" id="price-calculator" aria-labelledby="price-calc-title">
       <header className="price-calc__head">
         <h2 id="price-calc-title">Калькулятор стоимости</h2>
       </header>

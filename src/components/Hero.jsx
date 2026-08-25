@@ -32,18 +32,25 @@ export default function Hero() {
           </Link>
         </div>
 
-        <ul className="hero__benefits" aria-label="Преимущества компании">
-          {HERO_BENEFITS.map((benefit, index) => (
-            <li key={benefit.title} className="hero__benefit reveal" style={{ "--reveal-delay": `${700 + index * 90}ms` }}>
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              <span className="hero__benefit-copy">
-                <b>{benefit.title}</b> {benefit.text}
-              </span>
-            </li>
-          ))}
-        </ul>
+        <div className="hero__benefits-row">
+          <ul className="hero__benefits" aria-label="Преимущества компании">
+            {HERO_BENEFITS.map((benefit, index) => (
+              <li key={benefit.title} className="hero__benefit reveal" style={{ "--reveal-delay": `${700 + index * 90}ms` }}>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="m5 12 4 4L19 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <span className="hero__benefit-copy">
+                  <b>{benefit.title}</b> {benefit.text}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <Link to="/price#price-calculator" className="hero__calculator reveal" style={{ "--reveal-delay": "970ms" }}>
+            <span>Калькулятор стоимости</span>
+            <b>Рассчитать <i aria-hidden="true">→</i></b>
+          </Link>
+        </div>
       </div>
 
       <a href="#services" className="hero__scroll" aria-label="Пролистать к услугам">

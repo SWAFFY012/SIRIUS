@@ -363,12 +363,21 @@
 }
 
 /* Преимущества без отдельной фоновой плашки. */
+.hero__benefits-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 220px);
+  align-items: stretch;
+  gap: clamp(0.9rem, 1.8vw, 1.4rem);
+  width: min(100%, 1180px);
+  margin-top: 0.35rem;
+}
+
 .hero__benefits {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(0.75rem, 1.5vw, 1.25rem);
-  width: min(100%, 960px);
-  margin-top: 0.35rem;
+  width: 100%;
+  margin-top: 0;
   padding: 0;
   list-style: none;
 }
@@ -400,7 +409,74 @@
   background: var(--gold-soft);
 }
 
+.hero__calculator {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  align-content: space-between;
+  gap: 1rem;
+  min-height: 100%;
+  padding: 1rem;
+  overflow: hidden;
+  border: 1px solid var(--gold-line);
+  border-radius: var(--radius-sm);
+  background: rgba(12, 12, 14, 0.72);
+  backdrop-filter: blur(14px);
+  transition: border-color var(--mid) var(--ease), transform var(--mid) var(--ease);
+}
+
+.hero__calculator::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--gold-soft), transparent 64%);
+  opacity: 0.6;
+  transition: opacity var(--mid) var(--ease);
+}
+
+.hero__calculator span {
+  font-family: var(--font-display);
+  font-size: clamp(0.82rem, 0.72rem + 0.35vw, 1rem);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.hero__calculator b {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--gold-2);
+}
+
+.hero__calculator i {
+  font-style: normal;
+  font-size: 1.2rem;
+  transition: transform var(--mid) var(--ease);
+}
+
+.hero__calculator:hover {
+  border-color: var(--gold-2);
+  transform: translateY(-2px);
+}
+
+.hero__calculator:hover::before {
+  opacity: 1;
+}
+
+.hero__calculator:hover i {
+  transform: translateX(4px);
+}
+
 @media (max-width: 760px) {
+  .hero__benefits-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
   .hero__benefits {
     grid-template-columns: 1fr;
     gap: 0.35rem;
@@ -410,5 +486,16 @@
     min-height: 44px;
     padding-block: 0.45rem;
     font-size: 0.8rem;
+  }
+
+  .hero__calculator {
+    min-height: 76px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .hero__calculator b {
+    gap: 0.45rem;
   }
 }

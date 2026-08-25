@@ -23,7 +23,12 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
     document.title = TITLES[pathname] ?? TITLES["/"]
-    if (hash) return
+    if (hash) {
+      const frame = window.requestAnimationFrame(() => {
+        document.querySelector(hash)?.scrollIntoView({ block: "start" })
+      })
+      return () => window.cancelAnimationFrame(frame)
+    }
     window.scrollTo(0, 0)
   }, [pathname, hash])
   return null

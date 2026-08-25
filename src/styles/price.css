@@ -66,6 +66,7 @@
   --calc-muted: #5f5b53;
   --calc-line: rgba(30, 27, 20, 0.14);
   margin-top: clamp(4rem, 8vw, 7rem);
+  scroll-margin-top: calc(var(--header-h) + 2.6rem);
   border-color: rgba(255, 255, 255, 0.7);
   background: rgba(246, 241, 225, 0.8);
   color: var(--calc-text);
@@ -129,6 +130,10 @@
 
   .price-calc__categories button {
     border-color: var(--calc-line);
+  }
+
+  .price-calc {
+    scroll-margin-top: calc(var(--header-h-mob) + 2.35rem);
   }
 }
 

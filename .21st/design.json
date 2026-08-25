@@ -118,6 +118,11 @@
       "area": "compact-page-alignment",
       "decision": "Lift case carousels and the full price list, enlarge gold case locations, remove the gray cases lead, and bottom-align the contacts CTA with the map.",
       "reason": "Tightens page entry points and creates clearer vertical alignment across cases, pricing, and contacts."
+    },
+    {
+      "area": "header-logo-and-hero-calculator",
+      "decision": "Increase the animated logo within taller desktop and mobile header bounds, nudge it down on compact screens, and place a calculator CTA beside the hero benefits with a direct price-calculator anchor.",
+      "reason": "Keeps the logo prominent without crossing the header divider and gives visitors a direct estimation path from the first screen."
     }
   ],
   "evidence": [
