@@ -50,60 +50,57 @@
   letter-spacing: -0.03em;
   background-image: linear-gradient(
     90deg,
-    var(--gold-hi) 0%,
-    var(--gold-2) 32%,
-    var(--type-sweep-1) 42%,
-    var(--type-sweep-2) 49%,
-    var(--type-sweep-3) 56%,
-    var(--type-sweep-4) 63%,
-    var(--type-sweep-5) 70%,
-    var(--gold-2) 80%,
-    var(--gold-hi) 100%
+    var(--gold-hi) 0 44%,
+    var(--type-sweep-1) 47%,
+    var(--type-sweep-2) 51%,
+    var(--type-sweep-3) 55%,
+    var(--type-sweep-4) 59%,
+    var(--type-sweep-5) 63%,
+    transparent 69% 100%
   );
   background-size: 240% 100%;
-  animation: hero-type-sweep 2.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-}
-
-.hero__caret {
-  display: inline-block;
-  width: 0.055em;
-  height: 0.82em;
-  background: var(--gold-2);
-  border-radius: 1px;
-  animation: caret-blink 1s steps(2, start) infinite;
-  box-shadow: 0 0 18px var(--gold-glow);
-}
-
-.hero__caret.is-done {
-  animation: caret-fade 0.5s var(--ease) forwards;
-}
-
-@keyframes caret-blink {
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes caret-fade {
-  to {
-    opacity: 0;
-    transform: scaleY(0.2);
-  }
+  animation: hero-type-sweep 4.2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  will-change: opacity, transform, filter, background-position;
 }
 
 @keyframes hero-type-sweep {
-  from {
+  0%,
+  6% {
+    opacity: 0;
     background-position: 100% 50%;
+    filter: blur(6px);
+    transform: translateY(0.1em);
   }
-  to {
-    background-position: -30% 50%;
+
+  14% {
+    opacity: 1;
+  }
+
+  62%,
+  86% {
+    opacity: 1;
+    background-position: 0% 50%;
+    filter: blur(0);
+    transform: none;
+  }
+
+  100% {
+    opacity: 0;
+    background-position: 0% 50%;
+    filter: blur(0);
+    transform: translateY(-0.04em);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__typeword,
-  .hero__caret {
+  .hero__typeword {
     animation: none;
+    background: var(--gold-grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: 1;
+    filter: none;
+    transform: none;
   }
 }
 

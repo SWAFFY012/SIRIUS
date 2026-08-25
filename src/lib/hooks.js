@@ -46,10 +46,7 @@ export function useReveal(deps = []) {
  * Печатает слово посимвольно, когда элемент появился на экране.
  * @returns {[import("react").RefObject, string, boolean]} ref, набранный текст, флаг завершения
  */
-export function useTypewriter(
-  word,
-  { speed = 92, delay = 350, loop = false, hold = 1500, eraseSpeed = 58, loopDelay = 380 } = {},
-) {
+export function useTypewriter(word, { speed = 92, delay = 350 } = {}) {
   const ref = useRef(null)
   const [typed, setTyped] = useState("")
   const [done, setDone] = useState(false)
@@ -63,45 +60,22 @@ export function useTypewriter(
 
     let index = 0
     let timer = 0
-    let cancelled = false
-
-    const schedule = (callback, timeout) => {
-      timer = window.setTimeout(() => {
-        if (!cancelled) callback()
-      }, timeout)
-    }
-
-    const type = () => {
-      index += 1
-      setTyped(word.slice(0, index))
-
-      if (index < word.length) {
-        schedule(type, speed)
-        return
-      }
-
-      setDone(true)
-      if (loop) schedule(erase, hold)
-    }
-
-    const erase = () => {
-      index -= 1
-      setTyped(word.slice(0, index))
-
-      if (index > 0) {
-        schedule(erase, eraseSpeed)
-      } else {
-        schedule(type, loopDelay)
-      }
-    }
-
-    schedule(type, delay)
+    const start = window.setTimeout(() => {
+      timer = window.setInterval(() => {
+        index += 1
+        setTyped(word.slice(0, index))
+        if (index >= word.length) {
+          window.clearInterval(timer)
+          setDone(true)
+        }
+      }, speed)
+    }, delay)
 
     return () => {
-      cancelled = true
-      window.clearTimeout(timer)
+      window.clearTimeout(start)
+      window.clearInterval(timer)
     }
-  }, [word, speed, delay, loop, hold, eraseSpeed, loopDelay])
+  }, [word, speed, delay])
 
   return [ref, typed, done]
 }

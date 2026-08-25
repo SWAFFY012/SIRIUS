@@ -81,8 +81,8 @@
     },
     {
       "area": "hero-typewriter",
-      "decision": "Loop the word ДОРОГА through type, hold, and erase phases, with a restrained multicolor sweep adapted from the selected Dia Text reference.",
-      "reason": "Keeps the user-selected animated focal point while preserving the established hero layout and a static reduced-motion fallback."
+      "decision": "Keep ДОРОГА whole and loop a soft multicolor reveal sweep across it, adapted from the selected Dia Text reference; never type or erase individual letters.",
+      "reason": "Matches the selected reference motion: the word smoothly emerges as a single unit, then fades before the next cycle."
     }
   ],
   "evidence": [

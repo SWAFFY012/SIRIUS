@@ -1,15 +1,7 @@
 import { Link } from "react-router-dom"
 import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
-import { useTypewriter } from "@/lib/hooks"
 
 export default function Hero() {
-  const [, typed, done] = useTypewriter(HERO_SLOGAN.typeword, {
-    loop: true,
-    hold: 1600,
-    eraseSpeed: 62,
-    loopDelay: 420,
-  })
-
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
       <div className="container hero__inner">
@@ -19,14 +11,13 @@ export default function Hero() {
           </span>
 
           <span className="hero__type-line" aria-hidden="true">
-            <span className="accent hero__typeword">{typed}</span>
-            <span className="hero__caret" />
+            <span className="accent hero__typeword">{HERO_SLOGAN.typeword}</span>
           </span>
 
           {HERO_SLOGAN.lines.map((line, i) => (
             <span
               key={line}
-              className={`hero__line${done ? " is-in" : ""}`}
+              className="hero__line is-in"
               style={{ "--line-delay": `${i * 130}ms` }}
               aria-hidden="true"
             >
