@@ -49,17 +49,36 @@ export default function Booking() {
 
     setStatus({ state: "sending", message: "Отправляем заявку…" })
 
-    // TODO: сюда подключим вебхук админки MAX, чтобы заявки падали в мессенджер
-    const payload = { ...data, services: picked, sentAt: new Date().toISOString() }
-    console.info("Заявка (черновик, отправка ещё не подключена):", payload)
+    try {
+      const response = await fetch("/api/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          privacy: Boolean(data.privacy),
+          services: picked,
+        }),
+      })
+      const result = await response.json().catch(() => null)
 
-    await new Promise((resolve) => setTimeout(resolve, 700))
-    setStatus({
-      state: "ok",
-      message: `Заявка принята. Перезвоним по номеру ${data.phone} и обсудим детали напрямую — без колл-центра.`,
-    })
-    form.reset()
-    setPicked([])
+      if (!response.ok || !result?.ok) {
+        throw new Error(result?.error || "Не удалось отправить заявку")
+      }
+
+      setStatus({
+        state: "ok",
+        message: `Заявка отправлена. Перезвоним по номеру ${data.phone} и обсудим детали напрямую — без колл-центра.`,
+      })
+      form.reset()
+      setPicked([])
+    } catch (error) {
+      setStatus({
+        state: "error",
+        message: error instanceof Error
+          ? `${error.message}. Позвоните нам по номеру ${COMPANY.phone}.`
+          : `Не удалось отправить заявку. Позвоните нам по номеру ${COMPANY.phone}.`,
+      })
+    }
   }
 
   return (

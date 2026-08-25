@@ -3,3 +3,6 @@ dist
 .claude
 .DS_Store
 *.local
+
+.vercel
+.env*
