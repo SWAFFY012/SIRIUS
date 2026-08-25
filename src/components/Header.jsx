@@ -43,7 +43,7 @@ export default function Header() {
           {reducedMotion ? (
             <img
               className="header__logo-media"
-              src="/logo/sirius-logo-opaque.png"
+              src="/logo/sirius-logo-yellow.png"
               alt=""
               width="600"
               height="300"
@@ -52,7 +52,7 @@ export default function Header() {
           ) : (
             <img
               className="header__logo-media"
-              src="/logo/sirius-logo-opaque.webp"
+              src="/logo/sirius-logo-yellow.webp"
               alt=""
               width="500"
               height="250"
