@@ -1,6 +1,8 @@
 const MAX_BODY_LENGTH = 12_000
 const ALLOWED_ORIGINS = new Set([
   "https://siriuss-nine.vercel.app",
+  "https://xn--h1aaxcdl.net",
+  "https://www.xn--h1aaxcdl.net",
   "http://localhost:5173",
   "http://localhost:5180",
   "http://127.0.0.1:5173",
@@ -37,14 +39,26 @@ const sendJson = (response, status, body) => {
 }
 
 export default async function handler(request, response) {
-  if (request.method !== "POST") {
-    response.setHeader("Allow", "POST")
-    return sendJson(response, 405, { ok: false, error: "Метод не поддерживается" })
-  }
-
   const origin = clean(request.headers.origin, 200)
   if (origin && !ALLOWED_ORIGINS.has(origin)) {
     return sendJson(response, 403, { ok: false, error: "Источник запроса не разрешён" })
+  }
+
+  if (origin) {
+    response.setHeader("Access-Control-Allow-Origin", origin)
+    response.setHeader("Vary", "Origin")
+  }
+  response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS")
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type")
+
+  if (request.method === "OPTIONS") {
+    response.status(204).end()
+    return
+  }
+
+  if (request.method !== "POST") {
+    response.setHeader("Allow", "POST, OPTIONS")
+    return sendJson(response, 405, { ok: false, error: "Метод не поддерживается" })
   }
 
   const body = request.body && typeof request.body === "object" ? request.body : {}
