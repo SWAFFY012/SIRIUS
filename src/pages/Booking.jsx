@@ -65,9 +65,7 @@ export default function Booking() {
       })
       const result = await response.json().catch(() => null)
 
-      if (!response.ok || !result?.ok) {
-        throw new Error(result?.error || "Не удалось отправить заявку")
-      }
+      if (!response.ok || !result?.ok) throw new Error("Не удалось отправить заявку")
 
       setStatus({
         state: "ok",
