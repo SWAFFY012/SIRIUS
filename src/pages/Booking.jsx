@@ -50,7 +50,9 @@ export default function Booking() {
     setStatus({ state: "sending", message: "Отправляем заявку…" })
 
     try {
-      const bookingApiUrl = import.meta.env.VITE_BOOKING_API_URL || "/api/telegram"
+      const bookingApiUrl =
+        import.meta.env.VITE_BOOKING_API_URL ||
+        "https://siriuss-nine.vercel.app/api/telegram"
 
       const response = await fetch(bookingApiUrl, {
         method: "POST",
