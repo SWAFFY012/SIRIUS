@@ -123,6 +123,11 @@
       "area": "header-logo-and-hero-calculator",
       "decision": "Increase the animated logo within taller desktop and mobile header bounds, nudge it down on compact screens, and place a calculator CTA beside the hero benefits with a direct price-calculator anchor.",
       "reason": "Keeps the logo prominent without crossing the header divider and gives visitors a direct estimation path from the first screen."
+    },
+    {
+      "area": "price-page-backgrounds",
+      "decision": "Use the supplied road image as a dark 16:9 full-price background and crossfade to the supplied paving-machine image when the calculator reaches the viewport.",
+      "reason": "Preserves text contrast while making the price-list and calculator portions visually distinct."
     }
   ],
   "evidence": [

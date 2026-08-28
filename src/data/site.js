@@ -77,4 +77,6 @@ export const SCENES = [
   "/backgrounds/scene-04.jpg",
   "/backgrounds/scene-05.jpg",
   "/backgrounds/scene-06.jpg",
+  "/backgrounds/price-list.jpg",
+  "/backgrounds/price-calculator.jpg",
 ];

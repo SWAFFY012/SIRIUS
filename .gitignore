@@ -6,5 +6,6 @@ dist
 
 .vercel
 .env*
+WALLS ON PRICE LIST/
 !.env.example
 config.local.js

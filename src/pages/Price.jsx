@@ -28,7 +28,7 @@ function PriceCalculator({ selected, onToggle, onQty }) {
   const total = picked.reduce((sum, item) => sum + item.price * selected[item.n], 0)
 
   return (
-    <div className="price-calc reveal" id="price-calculator" aria-labelledby="price-calc-title">
+    <div className="price-calc reveal" id="price-calculator" aria-labelledby="price-calc-title" data-scene={7}>
       <header className="price-calc__head">
         <h2 id="price-calc-title">Калькулятор стоимости</h2>
       </header>
@@ -94,7 +94,7 @@ function PriceCalculator({ selected, onToggle, onQty }) {
 
 function FullPriceList() {
   return (
-    <section className="full-price reveal" aria-labelledby="full-price-title">
+    <section className="full-price reveal" aria-labelledby="full-price-title" data-scene={6}>
       <header className="full-price__head">
         <h1 id="full-price-title">Полный прайс-лист</h1>
         <a href={PRICE_META.pdf} download target="_blank" rel="noopener noreferrer" className="full-price__pdf">Скачать PDF</a>
@@ -128,13 +128,13 @@ export default function Price() {
 
   return (
     <>
-      <ScrollScene startScene={3} />
+      <ScrollScene startScene={6} />
       <main className="page" ref={ref}>
-        <section className="section price" data-nav="/price" data-scene={3}>
+        <section className="section price" data-nav="/price">
           <div className="container">
             <FullPriceList />
             <PriceCalculator selected={selected} onToggle={toggle} onQty={setQty} />
-            <section className="terms reveal" aria-labelledby="terms-title">
+            <section className="terms reveal" aria-labelledby="terms-title" data-scene={7}>
               <h2 className="terms__title" id="terms-title">Условия сотрудничества</h2>
               <dl className="terms__list">{PRICE_TERMS.map((term) => <div className="terms__row" key={term.label}><dt>{term.label}</dt><dd>{term.value}</dd></div>)}</dl>
               <p className="terms__note">{PRICE_META.vat}. Прайс действителен до {PRICE_META.validUntil}. <a href={PRICE_META.pdf} download target="_blank" rel="noopener noreferrer">Скачать PDF-версию</a></p>
