@@ -1,49 +1,51 @@
 import { Link } from "react-router-dom"
-import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
-
-/* Слова слогана со сквозным номером — по нему считается задержка волны. */
-const SLOGAN_LINES = (() => {
-  let index = 0
-  return HERO_SLOGAN.lines.map((line) => line.split(" ").map((word) => ({ word, index: index++ })))
-})()
+import { HERO_BENEFITS, HERO_OFFER, HERO_SLOGAN } from "@/data/site"
 
 export default function Hero() {
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
       <div className="container hero__inner">
-        <h1 className="hero__title">
-          <span className="visually-hidden">
-            {HERO_SLOGAN.headline.join(" ")} {HERO_SLOGAN.lines.join(" ")}
-          </span>
-
-          {HERO_SLOGAN.headline.map((line) => (
-            <span key={line} className="hero__type-line" aria-hidden="true">
-              <span className="hero__headline">{line}</span>
+        <div className="hero__top">
+          <h1 className="hero__title">
+            <span className="visually-hidden">
+              {HERO_SLOGAN.typeword} {HERO_SLOGAN.lines.join(" ")}
             </span>
-          ))}
 
-          <span className="hero__slogan-lines" aria-hidden="true">
-            {SLOGAN_LINES.map((words, lineIndex) => (
-              <span key={lineIndex} className="hero__line is-in">
-                {words.map(({ word, index }) => (
-                  <span key={index}>
-                    <span className="hero__word" style={{ "--word-i": index }}>
-                      {word}
-                    </span>{" "}
-                  </span>
-                ))}
-              </span>
-            ))}
-          </span>
-        </h1>
+            <span className="hero__type-line" aria-hidden="true">
+              <span className="accent hero__typeword">{HERO_SLOGAN.typeword}</span>
+            </span>
 
-        <div className="hero__cta reveal" style={{ "--reveal-delay": "620ms" }}>
-          <Link to="/booking" className="btn btn--gold">
-            Оставить заявку
-          </Link>
-          <Link to="/services" className="btn btn--ghost">
-            Наши услуги
-          </Link>
+            <span className="hero__slogan-lines" aria-hidden="true">
+              {HERO_SLOGAN.lines.map((line) => (
+                <span key={line} className="hero__line is-in">
+                  {line}
+                </span>
+              ))}
+            </span>
+          </h1>
+
+          <div className="hero__cta reveal" style={{ "--reveal-delay": "620ms" }}>
+            <Link to="/booking" className="btn btn--gold">
+              Оставить заявку
+            </Link>
+            <Link to="/services" className="btn btn--ghost">
+              Наши услуги
+            </Link>
+          </div>
+
+          <aside className="hero__offer reveal" style={{ "--reveal-delay": "760ms" }}>
+            <h2 className="hero__offer-title">
+              <span>{HERO_OFFER.title[0]}</span> <span className="hero__offer-accent">{HERO_OFFER.title[1]}</span>
+            </h2>
+            <ul className="hero__offer-terms">
+              {HERO_OFFER.terms.map((term, index) => (
+                <li key={term} style={{ "--i": index }}>
+                  <span className="hero__offer-index">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="hero__offer-term">{term}</span>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
 
         <div className="hero__benefits-row">

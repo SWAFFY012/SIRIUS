@@ -50,20 +50,9 @@
   gap: 0.08em;
 }
 
-.hero__headline {
-  /* длинные строки заголовка ужимаются на узких экранах, чтобы не вылезать за край */
-  font-size: min(1em, 6vw);
-  white-space: nowrap;
+.hero__typeword {
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--text);
-}
-
-/* Слова слогана по очереди проявляются цветной волной и так же по очереди
-   исчезают. Цикл общий, каждое слово сдвинуто на --word-i шагов. */
-.hero__word {
-  display: inline-block;
-  color: transparent;
   background-image: linear-gradient(
     90deg,
     var(--gold-hi) 0 44%,
@@ -75,27 +64,25 @@
     transparent 69% 100%
   );
   background-size: 240% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  animation: hero-word-sweep 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  animation-delay: calc(var(--word-i, 0) * 120ms);
+  animation: hero-type-sweep 5.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
   clip-path: inset(0 100% 0 0);
   will-change: clip-path, background-position;
 }
 
-@keyframes hero-word-sweep {
-  0% {
+@keyframes hero-type-sweep {
+  0%,
+  8% {
     clip-path: inset(0 100% 0 0);
     background-position: 100% 50%;
   }
 
-  8%,
-  60% {
+  38%,
+  66% {
     clip-path: inset(0 0 0 0);
     background-position: 0% 50%;
   }
 
-  68%,
+  96%,
   100% {
     clip-path: inset(0 100% 0 0);
     background-position: 100% 50%;
@@ -103,11 +90,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__word {
+  .hero__typeword {
     animation: none;
     background: var(--gold-grad);
     -webkit-background-clip: text;
     background-clip: text;
+    opacity: 1;
     clip-path: none;
   }
 }
@@ -135,6 +123,174 @@
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: 0.6rem;
+}
+
+/* ── Слоган слева, оффер справа ── */
+
+/* оффер занимает правую часть экрана — контейнер героя на всю ширину сетки */
+.hero .hero__inner {
+  max-width: var(--maxw);
+}
+
+.hero__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(300px, 30vw, 420px);
+  grid-template-areas:
+    "title offer"
+    "cta offer";
+  column-gap: clamp(1.5rem, 3vw, 3rem);
+  row-gap: clamp(1rem, 2.2vh, 2rem);
+  align-items: end;
+}
+
+.hero__top .hero__title {
+  grid-area: title;
+}
+
+.hero__top .hero__cta {
+  grid-area: cta;
+}
+
+.hero__offer {
+  grid-area: offer;
+  align-self: end;
+  display: grid;
+  gap: clamp(0.9rem, 1.8vh, 1.25rem);
+  padding-left: clamp(1rem, 1.6vw, 1.5rem);
+  border-left: 2px solid var(--gold-2);
+}
+
+.hero__offer-title {
+  display: grid;
+  font-family: var(--font-accent);
+  font-size: clamp(1.75rem, 0.6rem + 2.4vw, 2.75rem);
+  font-weight: 600;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.hero__offer-accent {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+.hero__offer-terms {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__offer-terms li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 0.5rem;
+  padding-block: 0.6rem;
+  border-top: 1px solid var(--line-2);
+}
+
+.hero__offer-index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.hero__offer-term {
+  font-size: clamp(0.95rem, 0.85rem + 0.3vw, 1.1rem);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* Строки условий открываются золотой шторкой по очереди, один раз. */
+.hero__offer-terms li::after {
+  content: "";
+  position: absolute;
+  inset: 0.35rem 0;
+  background: var(--gold-grad);
+  transform: scaleX(0);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.hero__offer-terms .hero__offer-term,
+.hero__offer-terms .hero__offer-index {
+  opacity: 0;
+}
+
+.hero__offer-terms li::after {
+  /* запуск сразу при загрузке, вслед за появлением слогана */
+  animation: hero-offer-wipe 0.9s cubic-bezier(0.77, 0, 0.18, 1) both;
+  animation-delay: calc(0.9s + var(--i) * 0.18s);
+}
+
+.hero__offer-terms .hero__offer-term,
+.hero__offer-terms .hero__offer-index {
+  animation: hero-offer-text 0.01s linear both;
+  animation-delay: calc(0.9s + var(--i) * 0.18s + 0.45s);
+}
+
+@keyframes hero-offer-wipe {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+
+  50% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  50.1% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@keyframes hero-offer-text {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__offer-terms li::after {
+    display: none;
+  }
+
+  .hero__offer-terms .hero__offer-term,
+  .hero__offer-terms .hero__offer-index {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero__top {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "offer"
+      "cta";
+  }
+
+  .hero__offer {
+    max-width: 30rem;
+  }
 }
 
 /* ── Плашки ── */

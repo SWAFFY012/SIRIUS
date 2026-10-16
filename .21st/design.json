@@ -128,6 +128,11 @@
       "area": "price-page-backgrounds",
       "decision": "Use the supplied road image as a dark 16:9 full-price background and crossfade to the supplied paving-machine image when the calculator reaches the viewport.",
       "reason": "Preserves text contrast while making the price-list and calculator portions visually distinct."
+    },
+    {
+      "area": "hero-offer",
+      "decision": "Keep the original animated 'ДОРОГА' slogan on the left and place the asphalt/road-works offer in a right column: Oswald uppercase title (second line gold), three numbered terms with a one-time gold block-wipe reveal; stacks under the slogan below 1100px.",
+      "reason": "User asked to restore the road slogan and show the service offer in the empty right part of the hero with a distinct font."
     }
   ],
   "evidence": [

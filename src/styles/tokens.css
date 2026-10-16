@@ -62,6 +62,7 @@
   /* ── типографика ── */
   --font: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: "Unbounded", "Onest", system-ui, sans-serif;
+  --font-accent: "Oswald", "Onest", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
 
   --fs-eyebrow: clamp(0.68rem, 0.62rem + 0.2vw, 0.78rem);
