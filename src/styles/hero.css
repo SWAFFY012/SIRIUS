@@ -134,7 +134,9 @@
 
 .hero__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(300px, 30vw, 420px);
+  /* левая колонка не уже самой длинной строки слогана («заканчивается колея —»),
+     иначе строки переносятся; оффер забирает остаток */
+  grid-template-columns: minmax(calc(var(--fs-h1) * 11.5), 1fr) minmax(280px, 400px);
   grid-template-areas:
     "title offer"
     "cta offer";
@@ -163,7 +165,7 @@
 .hero__offer-title {
   display: grid;
   font-family: var(--font-accent);
-  font-size: clamp(1.75rem, 0.6rem + 2.4vw, 2.75rem);
+  font-size: clamp(1.6rem, 0.2rem + 2.6vw, 2.6rem);
   font-weight: 600;
   line-height: 0.98;
   letter-spacing: 0.01em;
