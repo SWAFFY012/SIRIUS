@@ -50,12 +50,20 @@
   gap: 0.08em;
 }
 
-.hero__typeword {
-  /* длинные цветные строки ужимаются на узких экранах, чтобы не вылезать за край */
+.hero__headline {
+  /* длинные строки заголовка ужимаются на узких экранах, чтобы не вылезать за край */
   font-size: min(1em, 6vw);
   white-space: nowrap;
   font-weight: 800;
   letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+/* Слова слогана по очереди проявляются цветной волной и так же по очереди
+   исчезают. Цикл общий, каждое слово сдвинуто на --word-i шагов. */
+.hero__word {
+  display: inline-block;
+  color: transparent;
   background-image: linear-gradient(
     90deg,
     var(--gold-hi) 0 44%,
@@ -67,25 +75,27 @@
     transparent 69% 100%
   );
   background-size: 240% 100%;
-  animation: hero-type-sweep 5.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: hero-word-sweep 9s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  animation-delay: calc(var(--word-i, 0) * 120ms);
   clip-path: inset(0 100% 0 0);
   will-change: clip-path, background-position;
 }
 
-@keyframes hero-type-sweep {
-  0%,
-  8% {
+@keyframes hero-word-sweep {
+  0% {
     clip-path: inset(0 100% 0 0);
     background-position: 100% 50%;
   }
 
-  38%,
-  66% {
+  8%,
+  60% {
     clip-path: inset(0 0 0 0);
     background-position: 0% 50%;
   }
 
-  96%,
+  68%,
   100% {
     clip-path: inset(0 100% 0 0);
     background-position: 100% 50%;
@@ -93,12 +103,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__typeword {
+  .hero__word {
     animation: none;
     background: var(--gold-grad);
     -webkit-background-clip: text;
     background-clip: text;
-    opacity: 1;
     clip-path: none;
   }
 }

@@ -1,25 +1,37 @@
 import { Link } from "react-router-dom"
 import { HERO_BENEFITS, HERO_SLOGAN } from "@/data/site"
 
+/* Слова слогана со сквозным номером — по нему считается задержка волны. */
+const SLOGAN_LINES = (() => {
+  let index = 0
+  return HERO_SLOGAN.lines.map((line) => line.split(" ").map((word) => ({ word, index: index++ })))
+})()
+
 export default function Hero() {
   return (
     <section className="hero" data-hero data-nav="/" id="hero">
       <div className="container hero__inner">
         <h1 className="hero__title">
           <span className="visually-hidden">
-            {HERO_SLOGAN.typewords.join(" ")} {HERO_SLOGAN.lines.join(" ")}
+            {HERO_SLOGAN.headline.join(" ")} {HERO_SLOGAN.lines.join(" ")}
           </span>
 
-          {HERO_SLOGAN.typewords.map((word) => (
-            <span key={word} className="hero__type-line" aria-hidden="true">
-              <span className="accent hero__typeword">{word}</span>
+          {HERO_SLOGAN.headline.map((line) => (
+            <span key={line} className="hero__type-line" aria-hidden="true">
+              <span className="hero__headline">{line}</span>
             </span>
           ))}
 
           <span className="hero__slogan-lines" aria-hidden="true">
-            {HERO_SLOGAN.lines.map((line) => (
-              <span key={line} className="hero__line is-in">
-                {line}
+            {SLOGAN_LINES.map((words, lineIndex) => (
+              <span key={lineIndex} className="hero__line is-in">
+                {words.map(({ word, index }) => (
+                  <span key={index}>
+                    <span className="hero__word" style={{ "--word-i": index }}>
+                      {word}
+                    </span>{" "}
+                  </span>
+                ))}
               </span>
             ))}
           </span>
