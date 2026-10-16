@@ -21,7 +21,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
       - run: npm run build
 
       - name: Upload dist via FTP
-        if: env.FTP_SERVER != ''
+        if: env.FTP_PASSWORD != ''
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -45,5 +45,5 @@ jobs:
           server-dir: ./xn--h1aaxcdl.net/htdocs/www/
 
       - name: Secrets missing
-        if: env.FTP_SERVER == ''
+        if: env.FTP_PASSWORD == ''
         run: echo "::warning::FTP-секреты не заданы — сборка прошла, выгрузка пропущена."
