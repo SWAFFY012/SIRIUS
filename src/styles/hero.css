@@ -51,6 +51,9 @@
 }
 
 .hero__typeword {
+  /* длинные цветные строки ужимаются на узких экранах, чтобы не вылезать за край */
+  font-size: min(1em, 6vw);
+  white-space: nowrap;
   font-weight: 800;
   letter-spacing: -0.03em;
   background-image: linear-gradient(

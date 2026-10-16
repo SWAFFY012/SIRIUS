@@ -7,12 +7,14 @@ export default function Hero() {
       <div className="container hero__inner">
         <h1 className="hero__title">
           <span className="visually-hidden">
-            {HERO_SLOGAN.typeword} {HERO_SLOGAN.lines.join(" ")}
+            {HERO_SLOGAN.typewords.join(" ")} {HERO_SLOGAN.lines.join(" ")}
           </span>
 
-          <span className="hero__type-line" aria-hidden="true">
-            <span className="accent hero__typeword">{HERO_SLOGAN.typeword}</span>
-          </span>
+          {HERO_SLOGAN.typewords.map((word) => (
+            <span key={word} className="hero__type-line" aria-hidden="true">
+              <span className="accent hero__typeword">{word}</span>
+            </span>
+          ))}
 
           <span className="hero__slogan-lines" aria-hidden="true">
             {HERO_SLOGAN.lines.map((line) => (
