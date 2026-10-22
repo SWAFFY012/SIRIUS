@@ -215,6 +215,60 @@ p {
   color: transparent;
 }
 
+/* ── число со «счётчиком»: цифры прокручиваются к новому значению ── */
+.roll {
+  display: inline-block;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.roll__track {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.roll__digit {
+  display: inline-block;
+  height: 1.15em;
+  overflow: hidden;
+  line-height: 1.15;
+  vertical-align: bottom;
+  animation: roll-in 0.35s var(--ease-out) both;
+}
+
+.roll__strip {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(calc(var(--digit) * -1.15em));
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.roll__strip > span {
+  height: 1.15em;
+}
+
+.roll__sep {
+  display: inline-block;
+  white-space: pre;
+}
+
+@keyframes roll-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roll__digit {
+    animation: none;
+  }
+
+  .roll__strip {
+    transition: none;
+  }
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;

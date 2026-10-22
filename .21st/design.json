@@ -133,6 +133,11 @@
       "area": "hero-offer",
       "decision": "Keep the original animated 'ДОРОГА' slogan on the left and place the asphalt/road-works offer in a right column: Oswald uppercase title (second line gold), three numbered terms with a one-time gold block-wipe reveal; stacks under the slogan below 1100px.",
       "reason": "User asked to restore the road slogan and show the service offer in the empty right part of the hero with a distinct font."
+    },
+    {
+      "area": "calculator-motion",
+      "decision": "Quantity rows expand smoothly, use a dark −/+ stepper instead of the native number input, keep the row sum in a fixed-width right column, and show sums with rolling-digit counters; the total scales its size to fit the summary column.",
+      "reason": "User reported the input sliding left and a white native control appearing as numbers grew."
     }
   ],
   "evidence": [

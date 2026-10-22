@@ -1,10 +1,17 @@
 import { useMemo, useState } from "react"
 import { Link } from "react-router-dom"
+import RollingNumber from "@/components/RollingNumber"
 import ScrollScene from "@/components/ScrollScene"
 import { PRICE_META, PRICE_SECTIONS, PRICE_TERMS } from "@/data/price"
 import { useReveal } from "@/lib/hooks"
 
 const money = (value) => Math.round(value).toLocaleString("ru-RU")
+
+/** Потолок объёма: самая длинная сумма строки всё равно помещается в свою колонку. */
+const MAX_QTY = 99999
+
+/** Шаг кнопок «−/+»: площади и погонные метры удобнее менять десятками. */
+const qtyStep = (unit) => (unit === "м²" || unit === "п.м." ? 10 : 1)
 
 const SECTION_IMAGES = {
   earthwork: "/cases/lapuhinka/4.jpg",
@@ -54,7 +61,8 @@ function PriceCalculator({ selected, onToggle, onQty }) {
           </div>
           <div className="price-calc__options">
             {activeSection.items.map((item) => {
-              const active = selected[item.n] !== undefined
+              const qty = selected[item.n]
+              const active = qty !== undefined
               const selectable = Boolean(item.price)
               return (
                 <div className={`price-option${active ? " is-on" : ""}${selectable ? "" : " is-disabled"}`} key={item.n}>
@@ -64,11 +72,19 @@ function PriceCalculator({ selected, onToggle, onQty }) {
                     <span className="price-option__body"><b>{item.name}</b><i>{item.n} · {item.unit}</i></span>
                     <strong>{item.price ? `от ${money(item.price)} ₽` : item.note}</strong>
                   </label>
-                  {active && (
-                    <div className="price-option__qty">
-                      <label htmlFor={`qty-${item.n}`}>Объём, {item.unit}</label>
-                      <input id={`qty-${item.n}`} type="number" min="0" step="1" inputMode="numeric" value={selected[item.n]} onChange={(event) => onQty(item.n, event.target.value)} />
-                      <b>от {money(item.price * selected[item.n])} ₽</b>
+                  {selectable && (
+                    <div className="price-option__qty-wrap" aria-hidden={!active} {...(active ? {} : { inert: "" })}>
+                      <div className="price-option__qty-clip">
+                        <div className="price-option__qty">
+                          <label htmlFor={`qty-${item.n}`}>Объём, {item.unit}</label>
+                          <div className="price-option__stepper">
+                            <button type="button" aria-label="Уменьшить объём" onClick={() => onQty(item.n, (qty ?? 1) - qtyStep(item.unit))} disabled={!qty}>−</button>
+                            <input id={`qty-${item.n}`} type="text" inputMode="numeric" pattern="[0-9]*" autoComplete="off" value={qty ?? 1} onChange={(event) => onQty(item.n, event.target.value.replace(/\D/g, ""))} onFocus={(event) => event.target.select()} />
+                            <button type="button" aria-label="Увеличить объём" onClick={() => onQty(item.n, (qty ?? 1) + qtyStep(item.unit))} disabled={qty >= MAX_QTY}>+</button>
+                          </div>
+                          <b className="price-option__sum">от <RollingNumber value={item.price * (qty ?? 0)} /> ₽</b>
+                        </div>
+                      </div>
                     </div>
                   )}
                 </div>
@@ -83,7 +99,9 @@ function PriceCalculator({ selected, onToggle, onQty }) {
             <figcaption>{activeSection.title}</figcaption>
           </figure>
           <div className="price-calc__result">
-            <strong className={picked.length ? "" : "is-empty"}>{picked.length ? `от ${money(total)} ₽` : "Выберите работы"}</strong>
+            <strong className={picked.length ? "" : "is-empty"} style={{ "--chars": `${money(total).length + 5}` }}>
+              {picked.length ? <>от <RollingNumber value={total} /> ₽</> : "Выберите работы"}
+            </strong>
             <Link to="/booking" className="btn btn--gold">Запросить смету</Link>
           </div>
         </aside>
@@ -124,7 +142,7 @@ export default function Price() {
     else next[item.n] = 1
     return next
   })
-  const setQty = (key, raw) => setSelected((prev) => ({ ...prev, [key]: Math.max(0, Number(raw) || 0) }))
+  const setQty = (key, raw) => setSelected((prev) => ({ ...prev, [key]: Math.min(MAX_QTY, Math.max(0, Number(raw) || 0)) }))
 
   return (
     <>
