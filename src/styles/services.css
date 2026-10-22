@@ -674,6 +674,19 @@
   white-space: nowrap;
 }
 
+.svc__price-total {
+  flex-wrap: wrap;
+  row-gap: 0.1rem;
+}
+
+/* строка-пояснение: цена за работы, а не за материал */
+.svc__price-total small {
+  flex-basis: 100%;
+  font-size: 0.62rem;
+  font-weight: 600;
+  opacity: 0.78;
+}
+
 .svc__rows {
   grid-template-rows: repeat(var(--price-row-count), minmax(0, 1fr));
   overflow: hidden;
@@ -757,6 +770,11 @@
 
   .svc__price-total b {
     font-size: 0.68rem;
+  }
+
+  /* в компактной карточке на две строки места нет */
+  .svc__price-total small {
+    display: none;
   }
 }
 

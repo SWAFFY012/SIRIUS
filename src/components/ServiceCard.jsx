@@ -79,8 +79,9 @@ export default function ServiceCard({ service, index }) {
 
             <div className="svc__price-sheet">
               <div className="svc__price-total">
-                <span>Цена за комплекс</span>
-                <b>от {money(service.flip.total)} ₽</b>
+                <span>Работы под ключ</span>
+                <b>от {money(service.flip.total)} ₽/{service.flip.unit}</b>
+                <small>Материалы отдельно не продаём</small>
               </div>
               <ol className="svc__rows" style={{ "--price-row-count": service.flip.rows.length }}>
                 {service.flip.rows.map((row, i) => (
